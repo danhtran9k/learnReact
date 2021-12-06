@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Đè ctrl hoặc click vào App để nhảy tới App component
 ReactDOM.render(
   <React.StrictMode>
     <App />
