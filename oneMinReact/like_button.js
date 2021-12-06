@@ -49,6 +49,11 @@ document.querySelectorAll('.like_button_container').forEach((domContainer) => {
 const domContainer = document.querySelector('#single_like_button');
 ReactDOM.render(e(SingleLikeButton), domContainer);
 
+
+// https://reactjs.org/docs/rendering-elements.html
+// Tuy gồm nhiều tag con nhưng inspect thì chỉ có h2 bị thay đổi
+// React sẽ biết chọn ele cần đổi
+
 // JSX style, cần babel để convert
 // https://reactjs.org/docs/react-without-jsx.html
 // https://babeljs.io/repl
@@ -62,7 +67,6 @@ ReactDOM.render(e(SingleLikeButton), domContainer);
 //   );
 //   ReactDOM.render(element, document.getElementById('tick-clock'));
 // }
-
 function tick() {
   const element = e(
     'div',
@@ -73,3 +77,12 @@ function tick() {
   ReactDOM.render(element, document.getElementById('tick-clock'));
 }
 setInterval(tick, 1000);
+
+
+/* 
+Note: Always start component names with a capital letter.
+
+React treats components starting with lowercase letters as DOM tags. For example, <div /> represents an HTML div tag, but <Welcome /> represents a component and requires Welcome to be in scope.
+
+https://reactjs.org/docs/jsx-in-depth.html
+*/

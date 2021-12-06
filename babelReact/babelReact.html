@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- https://reactjs.org/docs/add-react-to-a-website.html#quickly-try-jsx -->
+
+    <!--
+     Vị trí add tag trong link trên lại khác với 
+    https://reactjs.org/docs/add-react-to-a-website.html#step-2-add-the-script-tags
+    -->
+
+    <!-- Don't use this in production: -->
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <div id="tick-clock"></div>
+
+    <script type="text/babel">
+      ReactDOM.render(<h1>Hello, world!</h1>, document.getElementById('root'));
+    </script>
+
+    <!-- https://stackoverflow.com/questions/53042123/can-babel-standalone-be-used-if-index-html-is-served-locally-no-webserver -->
+    <!-- Bắt buộc phải load qua 1 using a web server or compiling your Babel code ahead of time. -> live server OK -->
+    <script type="text/babel" src="./babel_demo.js"></script>
+
+    <!--
+      Note: this page is a great way to try React but it's not suitable for production.
+      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
+
+      Read this section for a production-ready setup with JSX:
+      https://reactjs.org/docs/add-react-to-a-website.html#add-jsx-to-a-project
+
+      In a larger project, you can use an integrated toolchain that includes JSX instead:
+      https://reactjs.org/docs/create-a-new-react-app.html
+
+      You can also use React without JSX, in which case you can remove Babel:
+      https://reactjs.org/docs/react-without-jsx.html
+    -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  </body>
+</html>
