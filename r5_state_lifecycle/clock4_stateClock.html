@@ -3,14 +3,20 @@
 ==================================================================
 LINK
 
-https://reactjs.org/docs/state-and-lifecycle.html#adding-local-state-to-a-class
+https://reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class
 
 ==================================================================
 DESCRIPTION
 
-    Replace this.props[.X] with this.state[.X] in the render() method
-    Add a class constructor that assigns the initial this.state:
-    Remove the X prop from the <Clock /> element:
+Giải thích về didMount và WillUnmounted trong link trên
+https://reactjs.org/docs/state-and-lifecycle.html#using-state-correctly
+
+State Updates May Be Asynchronous
+React may batch multiple setState() calls into a single update for performance.
+
+Because this.props and this.state may be updated asynchronously, you should not rely on their values for calculating the next state.
+-> fix trong link
+
 
 */ 
 -->
@@ -20,19 +26,32 @@ DESCRIPTION
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clock 3</title>
+    <title>Clock 5</title>
   </head>
   <body>
     <div id="root"></div>
 
     <script type="text/babel">
       class Clock extends React.Component {
-        // Class components should always call the base constructor with props.
         constructor(props) {
           super(props);
           this.state = { date: new Date() };
         }
-        
+
+        componentDidMount() {
+          this.timerID = setInterval(() => this.tick(), 1000);
+        }
+
+        componentWillUnmount() {
+          clearInterval(this.timerID);
+        }
+
+        tick() {
+          this.setState({
+            date: new Date(),
+          });
+        }
+
         render() {
           return (
             <div>
@@ -43,17 +62,7 @@ DESCRIPTION
         }
       }
 
-      function tick() {
-        console.log("tick")
-        ReactDOM.render(
-          <Clock/>,
-          document.getElementById('root')
-        );
-      }
-
-      // Khi construct vậy thì tạm thời render sẽ ko cập nhập dù vẫn chạy interval
-      // -> life Cycle sẽ xử lý
-      setInterval(tick, 1000);
+      ReactDOM.render(<Clock />, document.getElementById('root'));
     </script>
 
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>

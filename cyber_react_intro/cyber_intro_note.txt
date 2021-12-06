@@ -1,0 +1,24 @@
+lệnh check:
+node -v
+npm -v
+
+extension:
+react snippet
+html to jsx
+Bracket Pair Colorizer 2
+ESLint
+
+React package:
+v
+Check react ko dùng powershell dc, phải về cmd
+create-react-app -v
+Nếu ko báo lỗi là cài thành công
+
+create-react-app proj_no_uppercase
+hoặc 
+npx create-react-app my-app
+
+npm start
+
+
+
