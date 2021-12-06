@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import HeaderRcc from './component/Demo/HeaderRcc';
 import HeaderRfc from './component/Demo/HeaderRfc';
+import BaiTapChiaLayout from './component/BaiTapChiaLayout/BaiTapChiaLayout';
 // nếu gõ Header trong App ko có cú pháp auto import của VScode 
 // -> tự lên trên gõ tay trước, hên xui sẽ có nhắc nhưng tránh quên
 // import Header from './component/Demo/Header';
@@ -14,6 +15,8 @@ function App() {
       <h2>Hello World</h2>
       <HeaderRcc />
       <HeaderRfc ></HeaderRfc>
+      <hr></hr>
+      <BaiTapChiaLayout />
     </div>
   );
 }
