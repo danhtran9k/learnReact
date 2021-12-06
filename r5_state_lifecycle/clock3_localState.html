@@ -1,35 +1,55 @@
+<!--  
+/*
+==================================================================
+LINK
+
+https://reactjs.org/docs/state-and-lifecycle.html#adding-local-state-to-a-class
+
+==================================================================
+DESCRIPTION
+
+
+*/ 
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Clock 3</title>
   </head>
   <body>
-    <div id="root">
-      <!-- This element's contents will be replaced with your component. -->
-    </div>
-    <!-- https://reactjs.org/docs/state-and-lifecycle.html#converting-a-function-to-a-class -->
+    <div id="root"></div>
+
     <script type="text/babel">
       class Clock extends React.Component {
+        // Class components should always call the base constructor with props.
+        constructor(props) {
+          super(props);
+          this.state = { date: new Date() };
+        }
+
         render() {
           return (
             <div>
               <h1>Hello, world!</h1>
-              <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
+              <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
             </div>
           );
         }
       }
 
       function tick() {
+        console.log("tick")
         ReactDOM.render(
-          <Clock date={new Date()} />,
+          <Clock/>,
           document.getElementById('root')
         );
       }
 
+      // Khi construct vậy thì tạm thời render sẽ ko cập nhập dù vẫn chạy interval 
+      // -> life Cycle sẽ xử lý
       setInterval(tick, 1000);
     </script>
 

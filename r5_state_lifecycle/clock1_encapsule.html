@@ -3,6 +3,7 @@
 ==================================================================
 LINK
 
+https://reactjs.org/docs/state-and-lifecycle.html
 
 ==================================================================
 DESCRIPTION
@@ -16,14 +17,29 @@ DESCRIPTION
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Template</title>
+    <title>Clock 1</title>
   </head>
   <body>
     <div id="root"></div>
 
     <script type="text/babel">
-      console.log('react with babel for demo');
-      ReactDOM.render(<h1>Hello, world!</h1>, document.getElementById('root'));
+      function Clock(props) {
+        return (
+          <div>
+            <h1>Hello, world!</h1>
+            <h2>It is {props.date.toLocaleTimeString()}.</h2>
+          </div>
+        );
+      }
+
+      function tick() {
+        ReactDOM.render(
+          <Clock date={new Date()} />,
+          document.getElementById('root')
+        );
+      }
+
+      setInterval(tick, 1000);
     </script>
 
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
