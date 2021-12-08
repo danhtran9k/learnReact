@@ -30,12 +30,12 @@ https://v5.reactrouter.com/web/guides/quick-start
 function App() {
   return (
     <BrowserRouter>
-      <NavbarRoot />
       <Switch>
         <Route exact path="/" component={BaiTapThucHanhLayout} />
         <Route exact path="/demolayout" component={BaiTapChiaLayout} />
         <Route exact path="/thlayout" component={BaiTapThucHanhLayout} />
       </Switch>
+      <NavbarRoot />
     </BrowserRouter>
   );
 }
