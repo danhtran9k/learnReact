@@ -51,11 +51,17 @@ export default class HandleEventRCC extends Component {
      * Cách arrow truyền ok
      * Sữ dụng 1 function callback nặc danh, click vô mới chạy hàm kèm args !!
      */
-    return (
-      // Nếu đặt hàm trong đây thì ko cần this
-      // -> tương tự phần data binding
-      // Arrow w args btn mà dùng function thường thay vì arrow sẽ ko được
+    const noThisHandleInside = (name) => {
+      alert('no this handle for: ' + name);
+    };
+    // Nếu đặt hàm trong đây thì ko cần this
+    // -> tương tự phần data binding
+    // !! Tuy nhiên khi đó sẽ làm hàm render quá nhiều dữ liệu
+    // Arrow w args btn mà dùng function thường thay vì arrow sẽ ko được
+    // TH nếu hàm này ở ngoài phải gọi kèm this phía trước nhưng khi đó sẽ lỗi
+    // Chỉ phù hợp với dạng functional
 
+    return (
       <div>
         <h1>RCC handle Event</h1>
         <button
@@ -91,9 +97,12 @@ export default class HandleEventRCC extends Component {
           Arrow callback
         </button>
 
-        <h3>RCC Passing Arguments to Event Handlers</h3>
+        <h3 className="text-primary">
+          RCC Passing Arguments to Event Handlers
+        </h3>
 
         <button
+          className="btn-primary"
           id="btnClickMe"
           onClick={() => {
             this.handleClick('arrow es6');
@@ -112,6 +121,19 @@ export default class HandleEventRCC extends Component {
           onClick={this.shortHandleClickParam.bind(this, 'hello men')}
         >
           Binding style 2
+        </button>
+
+        <h3 className="text-danger">
+          Special case inside - for demo only, dont applied
+        </h3>
+        <button
+          className="btn-danger"
+          id="btnClickMe"
+          onClick={function () {
+            noThisHandleInside('DEMO ONLY !!!!');
+          }}
+        >
+          Demo only
         </button>
       </div>
     );
