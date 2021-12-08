@@ -1,0 +1,15 @@
+
+npm i redux
+npm i react-redux
+npm i styled-component
+npm i axios
+npm i react-router-dom
+npm i antd
+npm i react-saga / redux-thunk
+npm i tailwindcss
+npm i sass-loader
+npm i node-sass
+
+
+Placeholder
+npm i 

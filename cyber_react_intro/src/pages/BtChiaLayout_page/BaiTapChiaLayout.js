@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import HeaderDemo from './HeaderDemo'
-import ProductDemo from './ProductDemo'
+import HeaderDemo from '../../component/BaiTapChiaLayout/HeaderDemo'
+import ProductDemo from '../../component/BaiTapChiaLayout/ProductDemo'
 
 export default class BaiTapChiaLayout extends Component {
     render() {
