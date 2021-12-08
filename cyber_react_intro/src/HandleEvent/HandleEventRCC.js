@@ -7,7 +7,29 @@ export default class HandleEventRCC extends Component {
   };
 
   handleClick = (name) => {
-    alert('hello: ' + name);
+    alert('rfc with arguments name: ' + name);
+  };
+
+  /**
+   * Truyền tham số xử lý khi click
+   * Tham số truyền vào với binding bị chéo nhau
+   * bind(this, 'hello men') -> param = 'hello men',  element = button (this)
+   * Bind tác dụng để xác định ngữ nghĩa cho this là đối tượng đang click vào
+   *
+   */
+
+  handleClickParam = (param, element) => {
+    console.log('param', param);
+    console.log('element', element);
+    console.log('element target: ', element.target);
+    alert('param: ' + param);
+  };
+
+  // ele ở trên chỉ để debug -> do bind trả về và nhận vào args
+  // bỏ qua ok
+  shortHandleClickParam = (param) => {
+    console.log('param', param);
+    alert('param: ' + param);
   };
 
   render() {
@@ -15,15 +37,25 @@ export default class HandleEventRCC extends Component {
      * Cách viết direct function vào rất chuối
      * Nên định nghĩa hàm riêng ra
      * onClick sẽ nhận 1 callback function -> ko có đóng mở ngoặc
+     * -> nếu this.handleClick('es6') thì vừa load trang lại sẽ chạy ngay
      *
      * Nếu sử dụng ES6 sẽ có vấn đề nhỏ
      * https://reactjs.org/docs/handling-events.html
      * Tuy nhiên code đơn giản và nếu ko phức tạp thì ưu tiên arrow
+     * Bản chất es6 ngữ cảnh con trỏ this ko thay đổi
+     * Binding có tác dụng cố định con trỏ this nên tương tự
+     */
+
+    /**
+     * btn Callback no para cách viết đó sẽ ko truyền tham số vào được
+     * Cách arrow truyền ok
+     * Sữ dụng 1 function callback nặc danh, click vô mới chạy hàm kèm args !!
      */
     return (
-      // Nếu đặt hàm trong đây thì ko cần this 
-      // -> tương tự phần data binding 
-      
+      // Nếu đặt hàm trong đây thì ko cần this
+      // -> tương tự phần data binding
+      // Arrow w args btn mà dùng function thường thay vì arrow sẽ ko được
+
       <div>
         <h1>RCC handle Event</h1>
         <button
@@ -58,12 +90,29 @@ export default class HandleEventRCC extends Component {
         >
           Arrow callback
         </button>
-        {/* <button
+
+        <h3>RCC Passing Arguments to Event Handlers</h3>
+
+        <button
+          id="btnClickMe"
+          onClick={() => {
+            this.handleClick('arrow es6');
+          }}
+        >
+          Arrow w args
+        </button>
+        <button
           id="btnClickMe"
           onClick={this.handleClickParam.bind(this, 'hello men')}
         >
-          Click me!
-        </button> */}
+          Binding style w this
+        </button>
+        <button
+          id="btnClickMe"
+          onClick={this.shortHandleClickParam.bind(this, 'hello men')}
+        >
+          Binding style 2
+        </button>
       </div>
     );
   }
