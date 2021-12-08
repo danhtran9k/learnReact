@@ -1,6 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import DataBindingDemo from './component/DataBinding/DataBindingDemo';
+import HandleEvent from './HandleEvent/HandleEvent';
 import NavbarRoot from './component/NavbartRoot/NavbarRoot';
 import BaiTapChiaLayout from './pages/BtChiaLayout_page/BaiTapChiaLayout';
 import BaiTapThucHanhLayout from './pages/BtthLayout_page/BaiTapThucHanhLayout';
@@ -34,9 +35,11 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/home" component={Home} />
         <Route exact path="/demolayout" component={BaiTapChiaLayout} />
         <Route exact path="/thlayout" component={BaiTapThucHanhLayout} />
         <Route exact path="/databinding" component={DataBindingDemo} />
+        <Route exact path="/handleevent" component={HandleEvent} />
 
       </Switch>
       <hr />
