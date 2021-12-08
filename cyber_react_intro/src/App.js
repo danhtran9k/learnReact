@@ -1,8 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import DataBindingDemo from './component/DataBinding/DataBindingDemo';
 import NavbarRoot from './component/NavbartRoot/NavbarRoot';
 import BaiTapChiaLayout from './pages/BtChiaLayout_page/BaiTapChiaLayout';
 import BaiTapThucHanhLayout from './pages/BtthLayout_page/BaiTapThucHanhLayout';
+import Home from './pages/Home/Home';
 /* 
 Header ở ngoài Switch nên render bình thường
 Chỉ cần dẫn link của nav giống ĐN trong Router
@@ -31,10 +33,13 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={BaiTapThucHanhLayout} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/demolayout" component={BaiTapChiaLayout} />
         <Route exact path="/thlayout" component={BaiTapThucHanhLayout} />
+        <Route exact path="/databinding" component={DataBindingDemo} />
+
       </Switch>
+      <hr />
       <NavbarRoot />
     </BrowserRouter>
   );

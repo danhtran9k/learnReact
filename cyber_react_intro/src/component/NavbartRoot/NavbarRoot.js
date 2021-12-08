@@ -59,6 +59,9 @@ export default class NavbarRoot extends Component {
                 <NavLink activeClassName='activeNavItem' activeStyle={activeLinkStyle} className="dropdown-item" to="/thlayout">
                   BaiTapThucHanhLayout
                 </NavLink>
+                <NavLink activeClassName='activeNavItem' activeStyle={activeLinkStyle} className="dropdown-item" to="/databinding">
+                  Data Binding
+                </NavLink>
               </div>
             </li>
           </ul>
