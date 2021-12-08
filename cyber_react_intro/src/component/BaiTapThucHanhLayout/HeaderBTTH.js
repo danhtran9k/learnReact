@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 
 export default class HeaderBTTH extends Component {
+  
+  // https://startbootstrap.com/previews/heroic-features
+  // Page xài BS5 nhưng đang import bs4 bằng snippet
+  // Responsive sẽ ko hoạt động chuẩn ? -> navbar
   // Demo nên copy thẳng html của web gốc
   // Các lỗi xuất hiện trong consol do link href = # -> xóa
+
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
