@@ -4,18 +4,21 @@ import { NavLink } from 'react-router-dom';
 export default class Home extends Component {
   render() {
     return (
-      <div>
-        <NavLink className="dropdown-item" to="/demolayout">
+      <div className="bg-light">
+        <NavLink className="d-block" to="/demolayout">
           BaiTapChiaLayout
         </NavLink>
-        <NavLink className="dropdown-item" to="/thlayout">
+        <NavLink className="d-block" to="/thlayout">
           BaiTapThucHanhLayout
         </NavLink>
-        <NavLink className="dropdown-item" to="/databinding">
+        <NavLink className="d-block" to="/databinding">
           Data Binding
         </NavLink>
-        <NavLink className="dropdown-item" to="/handleevent">
+        <NavLink className="d-block" to="/handleevent">
           Handle Event
+        </NavLink>
+        <NavLink className="d-block" to="/rendercondition">
+          Rendering Condition
         </NavLink>
       </div>
     );
