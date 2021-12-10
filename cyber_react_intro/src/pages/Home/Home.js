@@ -26,6 +26,10 @@ export default class Home extends Component {
         <NavLink className="d-block txtGlobalStyling" to="/stylingdemo">
           Styling Demo
         </NavLink>
+        <NavLink className="d-block" to="/renderloopdemo">
+          Render loop demo
+        </NavLink>
+        {/* demo */}
       </div>
     );
   }
