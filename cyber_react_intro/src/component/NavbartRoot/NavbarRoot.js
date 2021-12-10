@@ -71,6 +71,9 @@ export default class NavbarRoot extends Component {
                 <NavLink activeClassName='activeNavItem' activeStyle={activeLinkStyle} className="dropdown-item" to="/statedemo">
                   State Demo
                 </NavLink>
+                <NavLink activeClassName='activeNavItem' activeStyle={activeLinkStyle} className="dropdown-item" to="/stylingdemo">
+                  Styling Demo
+                </NavLink>
               </div>
             </li>
           </ul>

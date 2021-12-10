@@ -8,6 +8,7 @@ import BaiTapThucHanhLayout from './pages/BtthLayout_page/BaiTapThucHanhLayout';
 import Home from './pages/Home/Home';
 import RenderingCondition from './RenderingConditions/RenderingCondition';
 import StateDemo from './State/StateDemo';
+import Styling from './Styling/Styling';
 /* 
 Header ở ngoài Switch nên render bình thường
 Chỉ cần dẫn link của nav giống ĐN trong Router
@@ -44,6 +45,7 @@ function App() {
         <Route exact path="/handleevent" component={HandleEvent} />
         <Route exact path="/rendercondition" component={RenderingCondition} />
         <Route exact path="/statedemo" component={StateDemo} />
+        <Route exact path="/stylingdemo" component={Styling} />
 
       </Switch>
       <hr />
