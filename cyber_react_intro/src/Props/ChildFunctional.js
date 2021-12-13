@@ -4,7 +4,6 @@ export default function ChildFunctional(props) {
   return (
     <div>
       <div>
-        <h4 className="text-success">Child RCC class</h4>
         <img
           src={props.propSource}
           style={{ width: 100 }}

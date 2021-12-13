@@ -4,7 +4,6 @@ export default class ChildClass extends Component {
   render() {
     return (
       <div>
-        <h4>Child RCC class</h4>
         <img
           src={this.props.propSource}
           style={{ width: 50 }}
