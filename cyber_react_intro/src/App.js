@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import DataBindingDemo from './component/DataBinding/DataBindingDemo';
 import HandleEvent from './HandleEvent/HandleEvent';
-import NavbarRoot from './component/NavbartRoot/NavbarRoot';
+import NavbarRoot from './component/NavbarRoot/NavbarRoot';
 import BaiTapChiaLayout from './pages/BtChiaLayout_page/BaiTapChiaLayout';
 import BaiTapThucHanhLayout from './pages/BtthLayout_page/BaiTapThucHanhLayout';
 import Home from './pages/Home/Home';
@@ -10,6 +10,7 @@ import RenderingCondition from './RenderingConditions/RenderingCondition';
 import StateDemo from './State/StateDemo';
 import Styling from './Styling/Styling';
 import RenderWithLoop from './RenderWithLoop/RenderWithLoop';
+import DemoProps from './Props/DemoProps';
 /* 
 Header ở ngoài Switch nên render bình thường
 Chỉ cần dẫn link của nav giống ĐN trong Router
@@ -48,6 +49,7 @@ function App() {
         <Route exact path="/statedemo" component={StateDemo} />
         <Route exact path="/stylingdemo" component={Styling} />
         <Route exact path="/renderloopdemo" component={RenderWithLoop} />
+        <Route exact path="/demoprop" component={DemoProps} />
         {/* demo */}
       </Switch>
       <hr />

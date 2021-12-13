@@ -5,6 +5,7 @@ export default class Home extends Component {
   render() {
     return (
       <div className="bg-light">
+        <h5>Khóa 1 - React cơ bản</h5>
         <NavLink className="d-block" to="/demolayout">
           BaiTapChiaLayout
         </NavLink>
@@ -28,6 +29,11 @@ export default class Home extends Component {
         </NavLink>
         <NavLink className="d-block" to="/renderloopdemo">
           Render loop demo
+        </NavLink>
+        <br></br>
+        <h5>Khóa 2 - Truyền Data giữa các component</h5>
+        <NavLink className="d-block" to="/demoprop">
+          Demo prop
         </NavLink>
         {/* demo */}
       </div>
