@@ -11,6 +11,7 @@ import StateDemo from './State/StateDemo';
 import Styling from './Styling/Styling';
 import RenderWithLoop from './RenderWithLoop/RenderWithLoop';
 import DemoProps from './Props/DemoProps';
+import DemoPureComponent from './DemoPureComponent/DemoPureComponent';
 /* 
 Header ở ngoài Switch nên render bình thường
 Chỉ cần dẫn link của nav giống ĐN trong Router
@@ -49,7 +50,9 @@ function App() {
         <Route exact path="/statedemo" component={StateDemo} />
         <Route exact path="/stylingdemo" component={Styling} />
         <Route exact path="/renderloopdemo" component={RenderWithLoop} />
+        {/* Khóa 2 */}
         <Route exact path="/demoprop" component={DemoProps} />
+        <Route exact path="/demopure" component={DemoPureComponent} />
         {/* demo */}
       </Switch>
       <hr />

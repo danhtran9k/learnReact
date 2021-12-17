@@ -35,6 +35,9 @@ export default class Home extends Component {
         <NavLink className="d-block" to="/demoprop">
           Demo prop
         </NavLink>
+        <NavLink className="d-block" to="/demopure">
+          Demo pure component
+        </NavLink>
         {/* demo */}
       </div>
     );
