@@ -22,6 +22,11 @@ export default class ModelStateProvider extends Component {
   //   Chỉ là 1 phương án thay thế tạm ko dùng thư viện Redux, (context có sẵn trong React)
   // Chỉ 1 số TH cụ thể mới ưu việt hơn redux
 
+  /**
+   * Lợi thế ở đây là ta ko cần stateToProps và dispatch nữa
+   * Mọi children mặc định sẽ nhận các state và các hàm function (có thể setState) truyền vào hết
+   */
+
   render() {
     return (
       // Đưa các State chung và phương thức vào
