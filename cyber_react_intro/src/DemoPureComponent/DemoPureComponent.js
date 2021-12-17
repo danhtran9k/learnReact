@@ -39,26 +39,36 @@ export default class DemoPureComponent extends Component {
     let subHienTai = this.state.sub;
     subHienTai.soLuong += 1;
     this.setState({
-      sub: { ...subHienTai },
+      sub: subHienTai,
+      //   Nếu ko gán copy {...subHienTai} => pure sẽ ko load lại !!
+      //   sub: {...subHienTai},
     });
   };
 
-  donate100k =() =>{
+  donate100k = () => {
     let soLuongDonate = this.state.donate;
     soLuongDonate.soLuong += 100;
     this.setState({
       donate: { ...soLuongDonate },
     });
-    console.log(this.state)
-  }
+    console.log(this.state);
+  };
 
+  /**
+   * ko được lạm dụng Pure Component
+   * có thể phát sinh lỗi ko ngờ
+   * Đối với các dạng obj, arr => ng tắc re-render như state => phải deepnew
+   * Chỉ nên xài cho các dạng Header , Slider, footer
+   * Giao diện cố định ko nhận Props State gì
+   */
   render() {
+    console.log('>>>>Parent loaded');
     return (
       <div className="container">
         <h3 className="text-center">PURE COMPONENT</h3>
         <div className="row">
           <NormalNoProps />
-          <PureNoProps like={this.state.like}/>
+          <PureNoProps />
           <PurePrimitiveProps follow={this.state.follow} />
           <PureObjProps sub={this.state.sub} />
         </div>
@@ -86,7 +96,7 @@ export default class DemoPureComponent extends Component {
 
           <div className="col-3">
             <h4 style={{ color: 'red' }}>
-              Số follow Vue ({this.state.sub.soLuong || 0})
+              Số follow Vue ({this.state.follow || 0})
             </h4>
             <button
               className="btn"
@@ -112,10 +122,9 @@ export default class DemoPureComponent extends Component {
             >
               Subscribe <i className="fa fa-check-circle-o"></i>
             </button>
-            
           </div>
           <div className="col-12">
-          <button
+            <button
               className="btn"
               style={{ color: 'red', border: '3px solid red' }}
               onClick={() => {
@@ -124,9 +133,7 @@ export default class DemoPureComponent extends Component {
             >
               Donate 100k ko render<i className="fa fa-diamond"></i>
             </button>
-             
           </div>
-
         </div>
       </div>
     );

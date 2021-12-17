@@ -4,7 +4,7 @@ export default class NormalNoProps extends Component {
   // PureComponent sẽ đi kèm phương thức shouldComponentUpdate
   // -> Kiểm tra props đaầu vào có thay đổi hay ko
   render() {
-    console.log('NormalNoProps loaded');
+    console.log('===NormalNoProps loaded');
     return (
       <div className="card text-white bg-dark col-3">
         <img
