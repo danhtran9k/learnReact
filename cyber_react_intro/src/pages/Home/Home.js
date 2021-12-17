@@ -38,6 +38,9 @@ export default class Home extends Component {
         <NavLink className="d-block" to="/demopure">
           Demo pure component
         </NavLink>
+        <NavLink className="d-block" to="/democontext">
+          Demo Context
+        </NavLink>
         {/* demo */}
       </div>
     );

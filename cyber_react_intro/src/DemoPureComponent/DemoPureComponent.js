@@ -16,10 +16,20 @@ export default class DemoPureComponent extends Component {
     // Dùng kỹ thuật js short-circuit ở giao diện để set default value
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#binary_logical_operators
     donate: { soLuong: null },
+
     like: null,
     follow: null,
     sub: { soLuong: null },
   };
+  /**
+   * Bản chất của setState là luôn luôn re-render lại mọi component thường
+   * -> dễ thấy là NormalNoProps luôn log ra dù click bất cứ nút nào -> ko quan tâm props state gì cả
+   * Và thật ra số lượng sub-scribe cũng luôn được render lại
+   * Có thể hiểu Redux như 1 dạng Pure xịn kèm Store nếu dùng dispatch về store tổng
+   * Khi dùng redux thì ta thường ko dùng setState mà chuyển về store xử lý nên ko thấy hiện tượng re-render toàn bộ
+   * ko cần phải setup kết nối redux để test lại -> chỉ cần nhìn NormalNoProps hiện tại ko có bất cứ tính chất gì đặc biệt nhưng luôn luôn re-log lại là KL được
+   *
+   */
 
   likeImage = () => {
     let likeHienTai = this.state.like + 1;
@@ -40,9 +50,14 @@ export default class DemoPureComponent extends Component {
     subHienTai.soLuong += 1;
     this.setState({
       sub: subHienTai,
+      //   Nếu gán theo cách trên:
+      //   -> PureComponent ko load , Component load OK -> như redux
+      //   sub: { ...subHienTai },
       //   Nếu ko gán copy {...subHienTai} => pure sẽ ko load lại !!
-      //   sub: {...subHienTai},
+      //   PureComponent compare như redux
     });
+    // console.log(this.state);
+    // State sẽ được cập nhập dù viết cách nào -> vì số sub được re-render
   };
 
   donate100k = () => {

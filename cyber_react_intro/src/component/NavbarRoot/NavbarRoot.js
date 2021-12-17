@@ -152,6 +152,14 @@ export default class NavbarRoot extends Component {
                 >
                   Demo pure component
                 </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/democontext"
+                >
+                  Demo context
+                </NavLink>
 
                 {/* demo K2*/}
               </div>
