@@ -1,14 +1,24 @@
 // rcc snippet init
-import React, { Component } from 'react';
 
-export default class BarbellBurger extends Component {
+class BarbellBurger extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      burger: [
+        { type: 'salad', amount: 1, price: 10 },
+        { type: 'cheese', amount: 1, price: 20 },
+        { type: 'beef', amount: 1, price: 55 },
+      ],
+    };
+  }
+  
   render() {
-    return ( 
-        <div>
-            Barbell Burger
-        </div>
-    )
+    return (
+      <div className="container">
+        <h1 className="text-center">Barbell Burger</h1>
+      </div>
+    );
   }
 }
 
-ReactDOM.render(<h1>Hello, world!</h1>, document.getElementById('root'));
+ReactDOM.render(<BarbellBurger />, document.getElementById('root'));
