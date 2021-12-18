@@ -29,13 +29,14 @@ class BarbellBurger extends React.Component {
     // Anti practice, => ko nên
     // nên tạo copy burger, copy state con
     // Burger_copy[index] = obj_copy
+    let burger = this.state.burger;
     if (!increase) {
       this.state.burger[index].amount--;
     } else {
       this.state.burger[index].amount++;
     }
     this.setState({
-      burger: this.state.burger,
+      burger,
     });
   };
 
@@ -54,14 +55,22 @@ class BarbellBurger extends React.Component {
               +
             </button>
             {amount}
-            <button
-              className="btn btn-danger ml-2"
-              onClick={() => {
-                this.changeAmount(index, false);
-              }}
-            >
-              -
-            </button>
+            {/* 
+            https://react-cn.github.io/react/tips/if-else-in-JSX.html
+            Note If-else don't work in React
+            */}
+            {amount === 0 ? (
+              <></>
+            ) : (
+              <button
+                className="btn btn-danger ml-2"
+                onClick={() => {
+                  this.changeAmount(index, false);
+                }}
+              >
+                -
+              </button>
+            )}
           </td>
           <td>{price}</td>
           <td>{amount * price}</td>
