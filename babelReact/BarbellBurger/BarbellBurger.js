@@ -20,23 +20,69 @@ class BarbellBurger extends React.Component {
       }
       return midBurger;
     });
-    console.log('temp:', temp);
+    // console.log('temp:', temp);
     // Array nested-array vẫn trả về jsx render bình thường
     return temp;
+  };
+
+  changeAmount = (index, increase) => {
+    // Anti practice, => ko nên
+    // nên tạo copy burger, copy state con
+    // Burger_copy[index] = obj_copy
+    if (!increase) {
+      this.state.burger[index].amount--;
+    } else {
+      this.state.burger[index].amount++;
+    }
+    this.setState({
+      burger: this.state.burger,
+    });
+  };
+
+  renderOrder = () => {
+    return this.state.burger.map(({ type, amount, price }, index) => {
+      return (
+        <tr key={index}>
+          <td className="text-capitalize">{type}</td>
+          <td>
+            <button
+              className="btn btn-success mr-2"
+              onClick={() => {
+                this.changeAmount(index, true);
+              }}
+            >
+              +
+            </button>
+            {amount}
+            <button
+              className="btn btn-danger ml-2"
+              onClick={() => {
+                this.changeAmount(index, false);
+              }}
+            >
+              -
+            </button>
+          </td>
+          <td>{price}</td>
+          <td>{amount * price}</td>
+        </tr>
+      );
+    });
   };
 
   render() {
     return (
       <div className="container">
         <h1 className="text-center">Barbell Burger</h1>
-        <div className="row text-center">
-          <div className="col-7">
+        <div className="row">
+          <div className="col-12 col-lg-7">
             <h2 className="text-center">Current Burger</h2>
             <div className="breadTop"></div>
             {this.renderMidBurger()}
             <div className="breadBottom"></div>
           </div>
-          <div className="col-5">
+          <div className="col-12 col-lg-5">
+            <h2 className="text-center">Order</h2>
             <table className="table">
               <thead>
                 <tr>
@@ -46,50 +92,7 @@ class BarbellBurger extends React.Component {
                   <th>Total</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td className="text-capitalize">salad</td>
-                  <td>
-                    <button className="btn btn-success mr-2" onClick={() => {}}>
-                      +
-                    </button>
-                    1
-                    <button className="btn btn-danger ml-2" onClick={() => {}}>
-                      -
-                    </button>
-                  </td>
-                  <td>10</td>
-                  <td>10</td>
-                </tr>
-                <tr>
-                  <td className="text-capitalize">cheese</td>
-                  <td>
-                    <button className="btn btn-success mr-2" onClick={() => {}}>
-                      +
-                    </button>
-                    1
-                    <button className="btn btn-danger ml-2" onClick={() => {}}>
-                      -
-                    </button>
-                  </td>
-                  <td>20</td>
-                  <td>20</td>
-                </tr>
-                <tr>
-                  <td className="text-capitalize">beef</td>
-                  <td>
-                    <button className="btn btn-success mr-2" onClick={() => {}}>
-                      +
-                    </button>
-                    1
-                    <button className="btn btn-danger ml-2" onClick={() => {}}>
-                      -
-                    </button>
-                  </td>
-                  <td>55</td>
-                  <td>55</td>
-                </tr>
-              </tbody>
+              <tbody>{this.renderOrder()}</tbody>
               <tfoot>
                 <tr>
                   <td colSpan="2"></td>
