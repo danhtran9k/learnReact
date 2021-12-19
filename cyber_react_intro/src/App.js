@@ -55,6 +55,8 @@ function App() {
         <Route exact path="/demoprop" component={DemoProps} />
         <Route exact path="/demopure" component={DemoPureComponent} />
         <Route exact path="/democontext" component={ContextDemo} />
+        {/* Khóa 3 */}
+        
         {/* demo */}
       </Switch>
       <hr />
