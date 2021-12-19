@@ -50,6 +50,14 @@ class BarbellTask extends React.Component {
     });
   };
 
+  addTask = (task) => {
+    const id = Math.floor(Math.random() * 10000) + 1;
+    // this.setState({
+    //   tasks : [...tasks, {...task, id}]
+    // })
+
+    console.log('add Task ', id);
+  };
   renderTasks = () => {
     return this.state.tasks.map(({ id, text, day, reminder }) => {
       return (
@@ -91,7 +99,7 @@ class BarbellTask extends React.Component {
             {this.state.showAddTask ? 'Close' : 'Add'}
           </button>
         </header>
-        {this.state.showAddTask && <AddTask />}
+        {this.state.showAddTask && <AddTask addTask={this.addTask} />}
         {this.state.tasks.length > 0 ? (
           this.renderTasks()
         ) : (
@@ -101,24 +109,66 @@ class BarbellTask extends React.Component {
     );
   }
 }
+// Việc đặt tên cho state (hay là state trong props) ko quan trọng
+// Khi gọi setState thì tất cả component bị render lại hết
+// state giống như hiểu ngầm ko mod trực tiếp
+// cần phải check qua es-lint để coi
 
 class AddTask extends React.Component {
+  stateForm = {
+    text: '',
+    day: '',
+    reminder: false,
+  };
+
+  // https://reactjs.org/docs/events.html
+  // SyntheticEvent
+  
+  setForm = (e) => {
+    let { name, value } = e.target;
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    console.log('submit');
+
+    if (!this.stateForm.text) {
+      alert('Please add a task');
+      return;
+    }
+  };
+
   render() {
     return (
-      <form className="add-form">
+      <form className="add-form" onSubmit={this.onSubmit}>
         <div className="form-control">
           <label>Task</label>
-          <input type="text" placeholder="Add Task" />
+          <input
+            type="text"
+            placeholder="Add Task"
+            name="text"
+            onChange={this.setForm}
+          />
         </div>
 
         <div className="form-control">
           <label>Day and Time</label>
-          <input type="text" placeholder="Add Day and Time" />
+          <input
+            type="text"
+            placeholder="Add Day and Time"
+            name="day"
+            onChange={this.setForm}
+          />
         </div>
 
         <div className="form-control form-control-check">
           <label>Set Reminder</label>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            name="reminder"
+            checked={this.stateForm.reminder}
+            onChange={this.setForm}
+          />
         </div>
 
         <input type="submit" value="Save Task" className="btn btn-block" />
