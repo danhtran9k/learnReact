@@ -115,31 +115,46 @@ class BarbellTask extends React.Component {
 // cần phải check qua es-lint để coi
 
 class AddTask extends React.Component {
-  stateForm = {
+  stateDefault = {
     text: '',
     day: '',
     reminder: false,
   };
 
+  stateForm = { ...this.stateDefault };
+
   // https://reactjs.org/docs/events.html
   // SyntheticEvent
-  
-  setForm = (e) => {
-    let { name, value } = e.target;
+
+  setForm = (event) => {
+    let { name, value } = event.target;
+    this.setState({ ...this.stateForm, [name]: value });
   };
 
-  onSubmit = (e) => {
-    e.preventDefault();
+  onSubmit = (event) => {
+    event.preventDefault();
     console.log('submit');
+
+    console.log('this.stateForm:', this.stateForm);
+    this.setState({
+      stateForm: { ...this.stateDefault, text: 'reset' },
+    });
 
     if (!this.stateForm.text) {
       alert('Please add a task');
       return;
     }
+
+    this.props.addTask({ text, day, reminder });
+    // Check vô ESLint thử
+    this.setState({
+      stateForm: { ...this.stateDefault },
+    });
   };
 
   render() {
     return (
+      // 3 cách viết gọi SyntheticEvent của event handler
       <form className="add-form" onSubmit={this.onSubmit}>
         <div className="form-control">
           <label>Task</label>
@@ -147,7 +162,10 @@ class AddTask extends React.Component {
             type="text"
             placeholder="Add Task"
             name="text"
-            onChange={this.setForm}
+            onChange={(event) => {
+              this.setForm(event);
+            }}
+            // Vì ko return gì từ setForm nên phải bọc {} xung quanh
           />
         </div>
 
@@ -157,7 +175,7 @@ class AddTask extends React.Component {
             type="text"
             placeholder="Add Day and Time"
             name="day"
-            onChange={this.setForm}
+            onChange={(e) => this.setForm(e)}
           />
         </div>
 
