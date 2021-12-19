@@ -52,11 +52,10 @@ class BarbellTask extends React.Component {
 
   addTask = (task) => {
     const id = Math.floor(Math.random() * 10000) + 1;
-    // this.setState({
-    //   tasks : [...this.tasks, {...task, id}]
-    // })
-
-    console.log('add Task ', id);
+    this.setState({
+      tasks : [...this.state.tasks, {...task, id}]
+    })
+    // console.log('add Task ', id);
   };
   renderTasks = () => {
     return this.state.tasks.map(({ id, text, day, reminder }) => {
@@ -109,6 +108,7 @@ class BarbellTask extends React.Component {
     );
   }
 }
+
 // Việc đặt tên cho state (hay là state trong props) ko quan trọng
 // Khi gọi setState thì tất cả component bị render lại hết
 // state giống như hiểu ngầm ko mod trực tiếp
@@ -120,6 +120,7 @@ class AddTask extends React.Component {
     day: '',
     reminder: false,
   };
+
   // https://stackoverflow.com/questions/59955647/is-state-a-reserved-word-in-react
   state = { ...this.stateDefault };
 
@@ -127,15 +128,18 @@ class AddTask extends React.Component {
   // SyntheticEvent
 
   setForm = (event) => {
-    let { name, value, type } = event.target;
-    this.setState({ ...this.state, [name]: value });
-    // console.log('{ name, value } :', { name, value });
+    let { name, type } = event.target;
+    let value = type === 'checkbox' ? event.target.checked : event.target.value;
+    this.setState({
+      ...this.state,
+      [name]: value,
+    });
   };
 
   onSubmit = (event) => {
     event.preventDefault();
-    console.log('submit');
-    console.log('this.state:', this.state);
+    // console.log('submit');
+    // console.log('this.state:', this.state);
 
     if (!this.state.text) {
       alert('Please add a task');
@@ -186,17 +190,16 @@ class AddTask extends React.Component {
             value={this.state.reminder}
             checked={this.state.reminder}
             // defaultChecked = {this.state.reminder}
-            //   
-            onChange={event => {
-              console.log('event.target:', event.target)
-              // this.setForm(event)
+            //
+            onChange={(event) => {
+              console.log('event.target:', event.target);
+              this.setForm(event)
               // event.target.checked = !event.target.checked
-              let { name, value } = event.currentTarget;
-            //   console.log(value)
-            //   console.log(typeof(value))
-            // }}
+              // let { name, value } = event.currentTarget;
+              //   console.log(value)
+              //   console.log(typeof(value))
+              // }}
             }}
-
           />
         </div>
 
