@@ -10,7 +10,7 @@ body {
   font-family: 'Lobster Two', cursive;
 }
 
-.container {
+.container-barbell-task {
   max-width: 500px;
   margin: 30px auto;
   overflow: auto;
@@ -55,23 +55,40 @@ body {
   background-color: darkblue;
 }
 
+
 .task {
   background: #f4f4f4;
   margin: 5px;
-  padding: 10px 20px;
   cursor: pointer;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
 }
 
+.task:hover{
+  background: #dddddd;
+
+}
 .task.reminder {
   border-left: 5px solid darkblue;
 }
 
-.task h3 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.task-content {
+  padding: 10px 20px;
 }
 
+.btn-delete-task {
+  color: red;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0 25px;
+}
+
+.btn-delete-task:hover {
+  background-color: red;
+  color: white;
+}
 .add-form {
   margin-bottom: 40px;
 }
