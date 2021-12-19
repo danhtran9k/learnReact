@@ -26,15 +26,25 @@ class BarbellTask extends React.Component {
   };
 
   toggleReminder = (id) => {
+    // let tasks = this.state.tasks
+    // tasks.map((task) => {
+    //   task.id === id ? task.reminder= !task.reminder  : true;
+    // });
+    // Dùng {} thì phải có return, () thì ko, khi hàm map giống như loop duyệt qua nhưng ko return về gì cả !!! mà sẽ mod trực tiếp vào array
+    // Khi mode thuộc tinh thì dùng dấu assign = chứ ko dùng :, và ko bọc {} lại
+
     let tasks = this.state.tasks.map((task) => {
       return task.id === id ? { ...task, reminder: !task.reminder } : task;
     });
-    // Dùng {} thì phải có return, () thì ko
-    // (task) => (task.id === id ? (task.reminder = !task.reminder) : task)
-    // hack sol như trên SAI vì khi đó ko return về obj task nữa mà return về BOOLEAN, trừ khi lồng thêm biểu thức con vào 3 ngôi
-    // Khi đó destruct bt còn tốt hơn
     // Có thể dùng findIndex id và set đúng index đó
     // Có thể dùng index khi map render task để tìm vị trí trong array và set
+    this.setState({
+      tasks,
+    });
+  };
+
+  deleteTask = (id) => {
+    let tasks = this.state.tasks.filter((task) => task.id !== id);
     this.setState({
       tasks,
     });
@@ -52,7 +62,14 @@ class BarbellTask extends React.Component {
             <h3>{text}</h3>
             <p>{day}</p>
           </div>
-          <div className="btn-delete-task">✕</div>
+          <div
+            className="btn-delete-task"
+            onClick={() => {
+              this.deleteTask(id);
+            }}
+          >
+            ✕
+          </div>
         </div>
       );
     });
@@ -62,7 +79,7 @@ class BarbellTask extends React.Component {
     return (
       <div className="container-barbell-task">
         <header className="header">
-          <h1>"Task Tracker"</h1>
+          <h1>Task Tracker</h1>
           <button
             style={{
               backgroundColor: this.state.showAddTask ? 'red' : 'darkBlue',
@@ -74,12 +91,38 @@ class BarbellTask extends React.Component {
             {this.state.showAddTask ? 'Close' : 'Add'}
           </button>
         </header>
+        {this.state.showAddTask && <AddTask />}
         {this.state.tasks.length > 0 ? (
           this.renderTasks()
         ) : (
           <span>No Tasks To Show</span>
         )}
       </div>
+    );
+  }
+}
+
+class AddTask extends React.Component {
+  render() {
+    return (
+      <form className="add-form">
+        <div className="form-control">
+          <label>Task</label>
+          <input type="text" placeholder="Add Task" />
+        </div>
+
+        <div className="form-control">
+          <label>Day and Time</label>
+          <input type="text" placeholder="Add Day and Time" />
+        </div>
+
+        <div className="form-control form-control-check">
+          <label>Set Reminder</label>
+          <input type="checkbox" />
+        </div>
+
+        <input type="submit" value="Save Task" className="btn btn-block" />
+      </form>
     );
   }
 }
