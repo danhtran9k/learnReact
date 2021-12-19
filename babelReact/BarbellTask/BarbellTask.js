@@ -53,7 +53,7 @@ class BarbellTask extends React.Component {
   addTask = (task) => {
     const id = Math.floor(Math.random() * 10000) + 1;
     // this.setState({
-    //   tasks : [...tasks, {...task, id}]
+    //   tasks : [...this.tasks, {...task, id}]
     // })
 
     console.log('add Task ', id);
@@ -120,35 +120,32 @@ class AddTask extends React.Component {
     day: '',
     reminder: false,
   };
-
-  stateForm = { ...this.stateDefault };
+  // https://stackoverflow.com/questions/59955647/is-state-a-reserved-word-in-react
+  state = { ...this.stateDefault };
 
   // https://reactjs.org/docs/events.html
   // SyntheticEvent
 
   setForm = (event) => {
-    let { name, value } = event.target;
-    this.setState({ ...this.stateForm, [name]: value });
+    let { name, value, type } = event.target;
+    this.setState({ ...this.state, [name]: value });
+    // console.log('{ name, value } :', { name, value });
   };
 
   onSubmit = (event) => {
     event.preventDefault();
     console.log('submit');
+    console.log('this.state:', this.state);
 
-    console.log('this.stateForm:', this.stateForm);
-    this.setState({
-      stateForm: { ...this.stateDefault, text: 'reset' },
-    });
-
-    if (!this.stateForm.text) {
+    if (!this.state.text) {
       alert('Please add a task');
       return;
     }
 
-    this.props.addTask({ text, day, reminder });
+    this.props.addTask(this.state);
     // Check vô ESLint thử
     this.setState({
-      stateForm: { ...this.stateDefault },
+      ...this.stateDefault,
     });
   };
 
@@ -161,9 +158,10 @@ class AddTask extends React.Component {
           <input
             type="text"
             placeholder="Add Task"
+            value={this.state.text}
             name="text"
-            onChange={(event) => {
-              this.setForm(event);
+            onChange={(e) => {
+              this.setForm(e);
             }}
             // Vì ko return gì từ setForm nên phải bọc {} xung quanh
           />
@@ -175,7 +173,8 @@ class AddTask extends React.Component {
             type="text"
             placeholder="Add Day and Time"
             name="day"
-            onChange={(e) => this.setForm(e)}
+            value={this.state.day}
+            onChange={this.setForm}
           />
         </div>
 
@@ -184,8 +183,20 @@ class AddTask extends React.Component {
           <input
             type="checkbox"
             name="reminder"
-            checked={this.stateForm.reminder}
-            onChange={this.setForm}
+            value={this.state.reminder}
+            checked={this.state.reminder}
+            // defaultChecked = {this.state.reminder}
+            //   
+            onChange={event => {
+              console.log('event.target:', event.target)
+              // this.setForm(event)
+              // event.target.checked = !event.target.checked
+              let { name, value } = event.currentTarget;
+            //   console.log(value)
+            //   console.log(typeof(value))
+            // }}
+            }}
+
           />
         </div>
 
