@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ButtonDemo, SmallButton } from '../Components/ButtonDemo';
 import { StyledLink } from '../Components/Link';
+import { TextField } from '../Components/TextField';
 
 export default class DemoJSS extends Component {
   // button nay tương tự directive component trong angular
@@ -20,6 +21,8 @@ export default class DemoJSS extends Component {
         <StyledLink id="abc" name="abc123">
           Styled Link <span> span vẫn OK</span> <p>Nhưng p thì ko</p>
         </StyledLink>
+        <hr></hr>
+        <TextField inputColor="green" />
       </div>
     );
   }

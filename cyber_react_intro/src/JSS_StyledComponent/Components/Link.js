@@ -15,12 +15,17 @@ import React from 'react';
 // https://styled-components.com/docs/basics#styling-any-component
 // arrow ngoặc tròn là return ngầm, ngoặc {} thì phải ghi rõ ra
 
+// restprops sẽ tự bung các thuộc tinh còn lại như id, name, type ...
+// Hoặc tự bóc tách riêng giống TH của className và lược bỏ bớt
 export const Link = ({ className, children, ...resprops }) => (
   <a className={className} {...resprops}>
     {children}
     <p>thẻ p trong đây vẫn ko dc</p>
   </a>
 );
+// Tức là thẻ a có thể chứa thẻ span trong nó -> (Đúng về html)
+// Nếu đổi a thành div/section/footer thì sẽ hiễn thị được các thẻ block, inline-block bên trong
+// Vẫn có nhiều trick-hack nhưng ko nên
 
 // color bị BS reboot đè css nhưng ko cần phải dùng tới important!
 // TODO Đè theo kiểu độ ưu tiên css bình thường là đủ thì giải quyết trong styled-component thế nào
