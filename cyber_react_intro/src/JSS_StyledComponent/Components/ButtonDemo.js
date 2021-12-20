@@ -13,10 +13,12 @@ import styled from 'styled-components';
  */
 
 export const ButtonDemo = styled.button`
-            background:linear-gradient(red,blue);
+            background:${(props) =>
+              props.primary ? 'green' : 'linear-gradient(red,blue)'};
             color:#fff;
             border:none;
             border-radius:0.5rem;
+            font-size:${(props) => (props.fontSize2x ? '2rem' : '1rem')};
             font-weight:bold;   
             padding:1rem;
             opacity:1;
@@ -27,4 +29,13 @@ export const ButtonDemo = styled.button`
                 &.button_style{
                     font-size:25px;
                 }
+`;
+
+export const SmallButton = styled(ButtonDemo)`
+// bgc ko đè được bg trong css button gốc,
+// comment trong jss được nhưng editor ko hiểu, ko format color lại
+//   background-color: orange;
+  background: orange;
+  font-size: 0.5rem;
+  padding: 0.5rem;
 `;
