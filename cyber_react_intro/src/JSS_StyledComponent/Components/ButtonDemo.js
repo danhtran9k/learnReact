@@ -31,6 +31,7 @@ export const ButtonDemo = styled.button`
                 }
 `;
 
+// https://styled-components.com/docs/basics#extending-styles
 export const SmallButton = styled(ButtonDemo)`
 // bgc ko đè được bg trong css button gốc,
 // comment trong jss được nhưng editor ko hiểu, ko format color lại
