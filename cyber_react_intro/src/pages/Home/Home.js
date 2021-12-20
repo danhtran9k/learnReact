@@ -42,6 +42,9 @@ export default class Home extends Component {
           Demo Context
         </NavLink>
         <h5>Khóa 3</h5>
+        <NavLink className="d-block" to="/demojss">
+          Demo JSS
+        </NavLink>
 
         {/* demo */}
       </div>

@@ -19,7 +19,6 @@ class BarbellTask extends React.Component {
   };
 
   toggleShowAddTask = () => {
-    this.state.tasks.map;
     this.setState({
       showAddTask: !this.state.showAddTask,
     });
@@ -57,6 +56,7 @@ class BarbellTask extends React.Component {
     })
     // console.log('add Task ', id);
   };
+
   renderTasks = () => {
     return this.state.tasks.map(({ id, text, day, reminder }) => {
       return (
@@ -127,6 +127,8 @@ class AddTask extends React.Component {
   // https://reactjs.org/docs/events.html
   // SyntheticEvent
 
+  // https://reactjs.org/docs/forms.html#controlled-components
+  // https://reactjs.org/docs/uncontrolled-components.html
   setForm = (event) => {
     let { name, type } = event.target;
     let value = type === 'checkbox' ? event.target.checked : event.target.value;

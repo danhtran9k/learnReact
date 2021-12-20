@@ -13,6 +13,7 @@ import RenderWithLoop from './RenderWithLoop/RenderWithLoop';
 import DemoProps from './Props/DemoProps';
 import DemoPureComponent from './DemoPureComponent/DemoPureComponent';
 import ContextDemo from './ContextDemo/ContextDemo';
+import DemoJSS from './JSS_StyledComponent/DemoJSS/DemoJSS';
 /* 
 Header ở ngoài Switch nên render bình thường
 Chỉ cần dẫn link của nav giống ĐN trong Router
@@ -56,6 +57,7 @@ function App() {
         <Route exact path="/demopure" component={DemoPureComponent} />
         <Route exact path="/democontext" component={ContextDemo} />
         {/* Khóa 3 */}
+        <Route exact path="/demojss" component={DemoJSS} />
         
         {/* demo */}
       </Switch>

@@ -176,6 +176,14 @@ export default class NavbarRoot extends Component {
               </button>
 
               <div className="dropdown-menu" aria-labelledby="dropdownId">
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/demojss"
+                >
+                  Demo JSS
+                </NavLink>
                 {/* demo K3*/}
               </div>
             </li>
