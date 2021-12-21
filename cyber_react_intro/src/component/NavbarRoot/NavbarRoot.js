@@ -184,6 +184,14 @@ export default class NavbarRoot extends Component {
                 >
                   Demo JSS
                 </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/demotheme"
+                >
+                  Demo Theme
+                </NavLink>
                 {/* demo K3*/}
               </div>
             </li>

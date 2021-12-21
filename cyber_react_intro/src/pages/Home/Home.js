@@ -45,6 +45,9 @@ export default class Home extends Component {
         <NavLink className="d-block" to="/demojss">
           Demo JSS
         </NavLink>
+        <NavLink className="d-block" to="/demotheme">
+          Demo Theme
+        </NavLink>
 
         {/* demo */}
       </div>
