@@ -15,6 +15,7 @@ import DemoPureComponent from './DemoPureComponent/DemoPureComponent';
 import ContextDemo from './ContextDemo/ContextDemo';
 import DemoJSS from './JSS_StyledComponent/DemoJSS/DemoJSS';
 import DemoTheme from './JSS_StyledComponent/Themes/DemoTheme';
+import LifeCycleReact from './LifeCycleReact/LifeCycleReact';
 /* 
 Header ở ngoài Switch nên render bình thường
 Chỉ cần dẫn link của nav giống ĐN trong Router
@@ -60,6 +61,7 @@ function App() {
         {/* Khóa 3 */}
         <Route exact path="/demojss" component={DemoJSS} />
         <Route exact path="/demotheme" component={DemoTheme} />
+        <Route exact path="/lifecyclereact" component={LifeCycleReact} />
         
         {/* demo */}
       </Switch>

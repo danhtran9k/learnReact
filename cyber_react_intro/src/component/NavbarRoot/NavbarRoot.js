@@ -192,6 +192,14 @@ export default class NavbarRoot extends Component {
                 >
                   Demo Theme
                 </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/lifecyclereact"
+                >
+                  Life Cycle React
+                </NavLink>
                 {/* demo K3*/}
               </div>
             </li>
