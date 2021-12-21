@@ -6,7 +6,8 @@ import ChildComponent from './ChildComponent';
  * LCR 16.0 sẽ khác, 16.4+ sẽ khác
  *  16.4:
  * https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
- *
+ * https://www.w3schools.com/react/react_lifecycle.asp
+ * https://reactjs.org/docs/react-component.html
  */
 
 export default class LifeCycleReact extends Component {
@@ -29,17 +30,44 @@ export default class LifeCycleReact extends Component {
     return null;
   }
 
+  //Được gọi khi setState hoặc props
+  // https://reactjs.org/docs/react-component.html#shouldcomponentupdate
+  // Tuy nhiên nên dùng PureComponent hơn là lifeCycle này
+  shouldComponentUpdate(newProps, newState) {
+    //return true thì chạy tiếp các lifecycle còn lại,
+    // ngược lại return false thì sẽ dừng lại -> không chạy tiếp các lifecycle khác
+    return true;
+  }
+
   render() {
+    console.log('renderParent');
     return (
       <div>
-        <h1>Parent Component</h1>
+        <h1>Life Cycle Update</h1>
+        <span>Number: {this.state.number}</span>
+        <button
+          className="btn btn-success"
+          onClick={() => {
+            this.setState({
+              number: this.state.number + 1,
+            });
+          }}
+        >
+          +
+        </button>
         <ChildComponent />
       </div>
     );
   }
-  
+
+  //Được gọi sau render và chỉ gọi 1 lần duy nhất (trạng thái mounting)
   //   Component con khi chạy cũng sẽ chạy các lifeCycle tương tự như cha
   componentDidMount() {
     console.log('componentDidMount');
+  }
+  
+  //Lần đầu sẽ không gọi, chỉ gọi khi setState hoặc thay đổi props
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate');
   }
 }

@@ -196,6 +196,14 @@ export default class NavbarRoot extends Component {
                   activeClassName="activeNavItem"
                   activeStyle={activeLinkStyle}
                   className="dropdown-item"
+                  to="/lifecyclemount"
+                >
+                  Life Cycle mount
+                </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
                   to="/lifecyclereact"
                 >
                   Life Cycle React

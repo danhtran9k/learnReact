@@ -48,8 +48,11 @@ export default class Home extends Component {
         <NavLink className="d-block" to="/demotheme">
           Demo Theme
         </NavLink>
+        <NavLink className="d-block" to="/lifecyclemount">
+          Life Cycle Mount
+        </NavLink>
         <NavLink className="d-block" to="/lifecyclereact">
-          Demo Life Cycle
+          Life Cycle React
         </NavLink>
 
         {/* demo */}
