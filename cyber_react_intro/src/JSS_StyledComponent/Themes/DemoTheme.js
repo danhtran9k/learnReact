@@ -27,17 +27,22 @@ export default class DemoTheme extends Component {
   state = {
     currentTheme: configDarkTheme,
   };
-
+  handleChangeTheme = (event) => {
+    this.setState({
+      currentTheme:
+        event.target.value === '1' ? configDarkTheme : configLightTheme,
+    });
+  };
   render() {
     // Const DivStyle đặt trong đây vẫn được
 
     return (
       // ThemeProvider sẽ bọc phần lớn nhất chịu ảnh hưởng của Theme
-    //   Có thể là app luôn
+      //   Có thể là app luôn
 
       <ThemeProvider theme={this.state.currentTheme}>
         <DivStyle>Hello mình là yasuo thông thạo 7 !!!</DivStyle>
-        <select>
+        <select onChange={this.handleChangeTheme}>
           <option value="1">Dark Theme</option>
           <option value="2">Light Theme</option>
         </select>
