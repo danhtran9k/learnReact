@@ -1,5 +1,6 @@
 // imrse snippet
 import React, { useState, useEffect } from 'react';
+import ChildUseEffect from './ChildUseEffect';
 
 export default function DemoHookUseEffect() {
   let [number, setNumber] = useState(1);
@@ -15,15 +16,28 @@ export default function DemoHookUseEffect() {
   //   });
 
   // Cách viết thay thế cho componentDidMount,
-  // tham số thứ 2 là mảng rỗng
+  // tham số thứ 2 là mảng rỗng -> xem mục note trong link
+  // https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects
+  // Tuy nhiên nếu dùng cả 2 cùng lúc thì effect sau sẽ cancel và chỉ clean up 1 lần
   useEffect(() => {
     console.log('didmount');
-  }, []);
+    return () => {
+      console.log('Parent cleanup - no check  -> willUnmount!');
+    };
+  });
+  // }, []);
+  // Nếu truyền mảng rỗng thì sẽ ko xuất hiện clean up !!
+
 
   // Cách viết thay thế componentDidUpdate
   useEffect(() => {
     console.log('didupdate khi number thay đổi');
-  }, [number]);
+    return () => {
+        console.log('Parent cleanup - number -> willUnmount!');
+      };
+    }, [number]);
+  // }, [number, like]); -> chạy khi cả 2 tham số thay đổi
+
   // number là giá trị nếu bị thay đổi sau render thì useEffect này sẽ chạy
   // Like thay đổi sẽ ko chạy eff này
 
@@ -71,6 +85,8 @@ export default function DemoHookUseEffect() {
         unchange num
       </button>
       {/* Tuy nhiên click like xong click về const Number thì lại render !!  */}
+
+      {like >= 3 && like < 6 ? <ChildUseEffect /> : ''}
     </div>
   );
 }
