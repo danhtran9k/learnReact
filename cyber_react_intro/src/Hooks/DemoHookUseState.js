@@ -31,7 +31,7 @@ export default function DemoHookUseState() {
           style={{ height: 250, width: 250 }}
           className="card-img-top"
           src="https://picsum.photos/200/200"
-          alt="picture"
+          alt="demo pic"
         />
         <div className="card-body">
           <h4 className="card-title">Picture</h4>
