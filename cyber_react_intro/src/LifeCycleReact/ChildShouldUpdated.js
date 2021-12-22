@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// import _ from 'lodash'
+// Dùng cdn thì xem trong shouldComponentUpdate
 
 export default class ChildShouldUpdate extends Component {
   //Được gọi khi component này được sử dụng trên DOM (giao diện của app)
@@ -7,13 +9,30 @@ export default class ChildShouldUpdate extends Component {
     return null;
   }
 
+  //   Chỉ 1 số TH rất đặt biệt mới phải dùng lifeCycle này
+  // -> PureComponent đã hardcode sẵn
+  //   https://reactjs.org/docs/react-component.html#shouldcomponentupdate
   shouldComponentUpdate(newProps, newState) {
+    const _ = window._;
+    // Nếu dùng npm install thì khai báo qua import và ko dùng dòng này
+
     if (newProps.number !== this.props.number) {
       return true;
     }
     if (newProps.number >= 4) {
       return true;
     }
+
+    // Lodash chỉ deep compare tránh trường hợp obj khởi tạo mới qua ... nhưng value ko đổi
+    if (!_.isEqual(newProps, this.props)) {
+      console.log('lodash cdn compare');
+      return true;
+    }
+    // Kiểu này củ chuối và vẫn có thể fail nếu cùng tham chiếu tới 1 obj
+    // if (newProps.product.name != this.props.product.name) {
+    //   return true;
+    // }
+    console.log("all condition check fail")
     return false;
   }
 
@@ -21,6 +40,7 @@ export default class ChildShouldUpdate extends Component {
     console.log('render ChildShouldUpdate');
     return (
       <div>
+        <h3>Child Skill: {this.props.product.name}</h3>
         <div className="card text-white bg-dark col-3">
           <img
             style={{ width: '100%', height: 250 }}

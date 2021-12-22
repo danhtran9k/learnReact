@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ChildShouldUpdate from './ChildShouldUpdated';
+import { Helmet } from 'react-helmet';
 
 /**
  * Life Cycle chỉ có trong class Component
@@ -16,6 +17,10 @@ export default class LifeCycleReact extends Component {
     super(props);
     this.state = {
       number: 1,
+      product: {
+        id: 1,
+        name: 'Javascript',
+      },
     };
     console.log('contructor');
   }
@@ -43,6 +48,9 @@ export default class LifeCycleReact extends Component {
     console.log('renderParent');
     return (
       <div>
+        <Helmet>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" />
+        </Helmet>
         <h1>Life Cycle React - Should Update</h1>
         <span>Number: {this.state.number}</span>
         <button
@@ -50,8 +58,8 @@ export default class LifeCycleReact extends Component {
           onClick={() => {
             this.setState({
               number: this.state.number + 1,
-            //   number: 1,
-            // Tự chỉnh mod chỗ này để test
+              //   number: 1,
+              // Tự chỉnh mod chỗ này để test
             });
           }}
         >
@@ -77,7 +85,41 @@ export default class LifeCycleReact extends Component {
         >
           const = 5
         </button>
-        {/* {this.state.number === 1 ? <ChildComponent /> : ''} */}
+        <hr />
+        <h3>Parent skill: {this.state.product.name}</h3>
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            // let newProduct = this.state.product ;
+            // Viết kiểu trên sẽ sai vì là tham chiếu
+            // -> truyền thẳng obj cũ vô luôn !! khi đó hàm check shouldUpdate so sánh khác nhau sẽ luôn false vì cùng 1 obj -> alias
+            // Kể cả việc dùng lodash ở đây nhưng vì là cùng obj nên ko được
+            // Lodash chỉ deep compare tránh trường hợp obj khởi tạo mới qua ... nhưng value ko đổi
+            // Nếu ko dùng lodash thì click cùng button setState product sẽ luôn render lại child
+
+            let newProduct = { ...this.state.product };
+            newProduct.name = 'React';
+
+            this.setState({
+              product: newProduct,
+            });
+          }}
+        >
+          Skill React
+        </button>
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            let newProduct = { ...this.state.product };
+            newProduct.name = 'R_Native';
+
+            this.setState({
+              product: newProduct,
+            });
+          }}
+        >
+          Skill R_Native
+        </button>
         <ChildShouldUpdate
           number={this.state.number}
           product={this.state.product}
