@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import ChildShouldUpdate from './ChildShouldUpdated';
+import ChildComponent from './ChildComponent';
 
 /**
  * Life Cycle chỉ có trong class Component
  * LCR 16.0 sẽ khác, 16.4+ sẽ khác
  *  16.4:
+ * '
  * https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
  * https://www.w3schools.com/react/react_lifecycle.asp
  * https://reactjs.org/docs/react-component.html
  */
 
-export default class LifeCycleReact extends Component {
+export default class LifeCycleDidUpdate extends Component {
   // Khai báo chuẩn constructor, chạy đầu tiên
   constructor(props) {
     super(props);
@@ -26,7 +27,7 @@ export default class LifeCycleReact extends Component {
   // Phương thức này ở bản 16.4 trở thành phương thức tĩnh
   // ko truy cập được vào con trỏ this nên có từ khóa "static"
   static getDerivedStateFromProps(newProps, currentState) {
-    // console.log('getDerivedStateFromProps');
+    console.log('getDerivedStateFromProps');
     return null;
   }
 
@@ -43,45 +44,19 @@ export default class LifeCycleReact extends Component {
     console.log('renderParent');
     return (
       <div>
-        <h1>Life Cycle React - Should Update</h1>
+        <h1>Life Cycle Did Update</h1>
         <span>Number: {this.state.number}</span>
         <button
           className="btn btn-success"
           onClick={() => {
             this.setState({
               number: this.state.number + 1,
-            //   number: 1,
-            // Tự chỉnh mod chỗ này để test
             });
           }}
         >
           +
         </button>
-        <button
-          className="btn btn-success"
-          onClick={() => {
-            this.setState({
-              number: 1,
-            });
-          }}
-        >
-          const = 1
-        </button>
-        <button
-          className="btn btn-success"
-          onClick={() => {
-            this.setState({
-              number: 5,
-            });
-          }}
-        >
-          const = 5
-        </button>
-        {/* {this.state.number === 1 ? <ChildComponent /> : ''} */}
-        <ChildShouldUpdate
-          number={this.state.number}
-          product={this.state.product}
-        />
+        {this.state.number === 1 ? <ChildComponent /> : ''}
       </div>
     );
   }
@@ -89,11 +64,11 @@ export default class LifeCycleReact extends Component {
   //Được gọi sau render và chỉ gọi 1 lần duy nhất (trạng thái mounting)
   //   Component con khi chạy cũng sẽ chạy các lifeCycle tương tự như cha
   componentDidMount() {
-    // console.log('componentDidMount');
+    console.log('componentDidMount');
   }
 
   //Lần đầu sẽ không gọi, chỉ gọi khi setState hoặc thay đổi props
   componentDidUpdate(prevProps, prevState) {
-    // console.log('componentDidUpdate');
+    console.log('componentDidUpdate');
   }
 }

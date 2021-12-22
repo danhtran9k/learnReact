@@ -51,6 +51,9 @@ export default class Home extends Component {
         <NavLink className="d-block" to="/lifecyclemount">
           Life Cycle Mount
         </NavLink>
+        <NavLink className="d-block" to="/lifecycledidupdate">
+          Life Cycle Did Update
+        </NavLink>
         <NavLink className="d-block" to="/lifecyclereact">
           Life Cycle React
         </NavLink>

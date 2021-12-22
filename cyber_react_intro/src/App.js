@@ -16,6 +16,7 @@ import ContextDemo from './ContextDemo/ContextDemo';
 import DemoJSS from './JSS_StyledComponent/DemoJSS/DemoJSS';
 import DemoTheme from './JSS_StyledComponent/Themes/DemoTheme';
 import LifeCycleMount from './LifeCycleReact/LifeCycleMount';
+import LifeCycleDidUpdate from './LifeCycleReact/LifeCycleDidUpdate';
 import LifeCycleReact from './LifeCycleReact/LifeCycleReact';
 /* 
 Header ở ngoài Switch nên render bình thường
@@ -63,6 +64,7 @@ function App() {
         <Route exact path="/demojss" component={DemoJSS} />
         <Route exact path="/demotheme" component={DemoTheme} />
         <Route exact path="/lifecyclemount" component={LifeCycleMount} />
+        <Route exact path="/lifecycledidupdate" component={LifeCycleDidUpdate} />
         <Route exact path="/lifecyclereact" component={LifeCycleReact} />
         
         {/* demo */}

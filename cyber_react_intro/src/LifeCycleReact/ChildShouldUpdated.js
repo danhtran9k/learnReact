@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
 
-export default class ChildComponent extends Component {
-    //Được gọi khi component này được sử dụng trên DOM (giao diện của app)
-    static getDerivedStateFromProps(newProps,currentState){
-        console.log('getDerivedStateFromProps_child')
-        return null;
+export default class ChildShouldUpdate extends Component {
+  //Được gọi khi component này được sử dụng trên DOM (giao diện của app)
+  static getDerivedStateFromProps(newProps, currentState) {
+    // console.log('getDerivedStateFromProps_child')
+    return null;
+  }
+
+  shouldComponentUpdate(newProps, newState) {
+    if (newProps.number !== this.props.number) {
+      return true;
     }
+    if (newProps.number >= 4) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
-    console.log('renderChildComponent');
+    console.log('render ChildShouldUpdate');
     return (
       <div>
         <div className="card text-white bg-dark col-3">
@@ -29,10 +40,10 @@ export default class ChildComponent extends Component {
       </div>
     );
   }
-      componentDidMount(){
-        console.log('componentDidMount_child')
-    }
-    
+  componentDidMount() {
+    console.log('componentDidMount_child');
+  }
+
   //   Khi unmount sẽ chạy life cycle này, pass render
   // https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
   // https://reactjs.org/docs/react-component.html#componentwillunmount
