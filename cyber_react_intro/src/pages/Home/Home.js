@@ -57,6 +57,9 @@ export default class Home extends Component {
         <NavLink className="d-block" to="/lifecyclereact">
           Life Cycle React
         </NavLink>
+        <NavLink className="d-block" to="/demousestate">
+          Demo Hook useState
+        </NavLink>
 
         {/* demo */}
       </div>

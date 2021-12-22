@@ -53,7 +53,7 @@ export default class NavbarRoot extends Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Khóa 1
+                K1
               </button>
 
               <div className="dropdown-menu" aria-labelledby="dropdownId">
@@ -132,7 +132,7 @@ export default class NavbarRoot extends Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Khóa 2
+                K2
               </button>
 
               <div className="dropdown-menu" aria-labelledby="dropdownId">
@@ -172,7 +172,7 @@ export default class NavbarRoot extends Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Khóa 3
+                K3
               </button>
 
               <div className="dropdown-menu" aria-labelledby="dropdownId">
@@ -215,6 +215,29 @@ export default class NavbarRoot extends Component {
                   to="/lifecyclereact"
                 >
                   Life Cycle React
+                </NavLink>
+                {/* demo K3*/}
+              </div>
+            </li>
+            <li className="nav-item dropup">
+              <button
+                type="button"
+                className="btn btn-secondary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                K3_Hook
+              </button>
+
+              <div className="dropdown-menu" aria-labelledby="dropdownId">
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/demousestate"
+                >
+                  Demo Hook Use State
                 </NavLink>
                 {/* demo K3*/}
               </div>
