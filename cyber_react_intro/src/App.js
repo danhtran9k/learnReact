@@ -19,6 +19,7 @@ import LifeCycleMount from './LifeCycleReact/LifeCycleMount';
 import LifeCycleDidUpdate from './LifeCycleReact/LifeCycleDidUpdate';
 import LifeCycleReact from './LifeCycleReact/LifeCycleReact';
 import DemoHookUseState from './Hooks/DemoHookUseState';
+import DemoHookUseEffect from './Hooks/DemoHookUseEffect';
 /* 
 Header ở ngoài Switch nên render bình thường
 Chỉ cần dẫn link của nav giống ĐN trong Router
@@ -68,6 +69,7 @@ function App() {
         <Route exact path="/lifecycledidupdate" component={LifeCycleDidUpdate} />
         <Route exact path="/lifecyclereact" component={LifeCycleReact} />
         <Route exact path="/demousestate" component={DemoHookUseState} />
+        <Route exact path="/demouseeffect" component={DemoHookUseEffect} />
         
         {/* demo */}
       </Switch>

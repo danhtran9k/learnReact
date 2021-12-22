@@ -239,6 +239,14 @@ export default class NavbarRoot extends Component {
                 >
                   Demo Hook Use State
                 </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/demouseeffect"
+                >
+                  Demo Hook Use Effect
+                </NavLink>
                 {/* demo K3*/}
               </div>
             </li>
