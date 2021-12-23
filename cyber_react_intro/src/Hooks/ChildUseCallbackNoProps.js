@@ -6,11 +6,12 @@ function ChildUseCallbackNoProps(props) {
 
   //   console.log('title', title);
   //   console.log('object', object);
-  console.log(`Child - no - props w ${props.primitiveValue}`);
+  console.log(`render Child - no - props w primitive: ${props.primitiveValue}`);
 
   return (
     <div>
-      <small>Child - no -props w {props.primitiveValue}</small>
+      <h1>{props.index}</h1>
+      <small>Child - no -props w primitive: {props.primitiveValue}</small>
       <textarea></textarea>
       <br /> <br />
       <button className="btn btn-success">Gửi</button>

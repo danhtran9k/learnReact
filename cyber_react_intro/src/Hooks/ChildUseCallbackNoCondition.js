@@ -1,7 +1,7 @@
 // snippet imrs -> memo
 import React, { memo } from 'react';
 
-function ChildUseCallback(props) {
+function ChildUseCallbackNoCondition(props) {
 //   let title = 'cyberlearn';
 //   let object = { id: 1, name: 'khải' };
 
@@ -13,7 +13,7 @@ function ChildUseCallback(props) {
     <div>
       <h1>{props.index}</h1>
       <small>
-        {props.index === 'child-1-condition' ? props.renderNotify() : 'no_render_notify'}
+        {props.renderNotify()}
       </small>
       <textarea></textarea>
       <br /> <br />
@@ -22,9 +22,4 @@ function ChildUseCallback(props) {
   );
 }
 
-export default memo(ChildUseCallback);
-// Chú ý memo khác với useMemo
-// https://reactjs.org/docs/react-api.html#reactmemo
-// https://reactjs.org/docs/hooks-reference.html#usememo
-
-// memo là HOC
+export default memo(ChildUseCallbackNoCondition);
