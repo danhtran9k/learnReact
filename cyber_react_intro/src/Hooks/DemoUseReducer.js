@@ -2,18 +2,31 @@ import React, { useReducer } from 'react';
 
 // rxreducer snippet
 const initialCart = [
-  { id: 1, name: 'IPhone', price: 1000, quantity: 1 },
+  //   { id: 1, name: 'IPhone', price: 1000, quantity: 1 },
   //   { id: 2, name: 'IPhone_fake', price: 2000, quantity: 2 }
 ];
 
 // ko có state = tateDefault như redux
 // Vì là functional nên ta sẽ truyền initialState và khi gọi hàm, ko set es6 default
 const cartReducer = (state, action) => {
-  console.log('run reducer');
+  console.log('action:', action);
   let stateUpdate = [...state];
 
   switch (action.type) {
-    case 'CASE_TYPE': {
+    case 'addToCart': {
+      // let stateUpdate = [...state];
+      // Đặt ở ngoài switch thì khỏi copy ở mỗi case
+
+      let index = stateUpdate.findIndex(
+        (itemCart) => itemCart.id === action.item.id
+      );
+      if (index !== -1) {
+        stateUpdate[index].quantity += 1;
+      } else {
+        // const itemCart = { ...action.item, quantity: 1 };
+        // stateUpdate.push(itemCart);
+        stateUpdate.push({ ...action.item, quantity: 1 });
+      }
       return stateUpdate;
     }
 
@@ -38,8 +51,24 @@ export default function DemoUseReducer() {
 
   // ===================================================================
   let [cart, dispatch] = useReducer(cartReducer, initialCart);
+  //   reducer hiện chỉ áp dụng trong component này
+  // Phải kết hợp thêm useContext nữa mới tương đương redux
   // ===================================================================
-  
+  const addToCart = (itemClick) => {
+    //   console.log(itemClick);
+    const action = {
+      type: 'addToCart',
+      item: itemClick,
+    };
+    dispatch(action);
+  };
+  /**
+   *
+   * ko thể đặt hàm chưa dispatch ở ngoài vì ko nhận từ reducer
+   * Reducer lại bắt buộc phải đặt trong function vì là Hooks
+   *
+   */
+
   return (
     <div>
       <div className="container">
@@ -56,7 +85,12 @@ export default function DemoUseReducer() {
                   <div className="card-body">
                     <h4 className="card-title">{item.name}</h4>
                     <p className="card-text">{item.price}</p>
-                    <button className="btn btn-success" onClick={() => {}}>
+                    <button
+                      className="btn btn-success"
+                      onClick={() => {
+                        addToCart(item);
+                      }}
+                    >
                       Add to cart
                     </button>
                   </div>
