@@ -4,6 +4,10 @@ import ChildUseCallback from './ChildUseCallback';
 import ChildUseCallbackNoCondition from './ChildUseCallbackNoCondition';
 import ChildUseCallbackNoProps from './ChildUseCallbackNoProps';
 
+/**
+ * shouldComponentUpdate
+ *
+ */
 export default function DemoHookUseCallback() {
   let [like, setLike] = useState(1);
   let [sub, setSub] = useState(10);
@@ -12,17 +16,29 @@ export default function DemoHookUseCallback() {
   const renderNotify = () => {
     return `Bạn đã thả ${like} ♥ !`;
   };
-
-  let callBackRenderNotifyNoRender = useCallback(renderNotify, []);
+  
+  let callBackRenderNotify = useCallback(renderNotify, [sub]); // eslint-disable-line
+  let callBackRenderNotifyNoRender = useCallback(renderNotify, []); // eslint-disable-line
   //   Viết như trên sẽ ko bao giờ update
-  let callBackRenderNotify = useCallback(renderNotify, [sub]);
+  
   //   Tuy nhiên hàm render do chứa ${like} nhưng useCallback lại ko dùng
   // -> ESLint sẽ Warning
 
+  /**
+   * Chú ý
+   * https://reactjs.org/docs/hooks-reference.html#usecallback
+   * https://stackoverflow.com/questions/55840294/how-to-fix-missing-dependency-warning-when-using-useeffect-react-hook
+   * useCallback(fn, deps) is equivalent to useMemo(() => fn, deps).
+   * every value referenced inside the callback should also appear in the dependencies array
+   * TODO Ở đây nếu ta dùng mảng rỗng để yêu cầu chỉ render 1 lần thì nên xài useEffect ? còn nếu phụ thuộc state ko liên quan ?? -> ESLint báo lỗi cho cả 2 trường hợp
+   * https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies
+   * https://overreacted.io/a-complete-guide-to-useeffect/
+   * https://www.freecodecamp.org/news/most-common-react-useeffect-problems-and-how-to-fix-them/
+   *
+   */
   //   Khi log bên trong return sẽ thấy mỗi lần {like hay biến bất kì} thay đổi thì cả comp cha cũng re-render
   //   -> hàm noti được tạo mới (tất cả nói chung -> chỉ có primitive thì memo mới nhận biết là ko đổi) và đưa vô props
   // -> memo thấy hàm mới (vùng nhớ tham chiếu mới) nên sẽ render lại - xảy ra khi ko phải biến đó thay đổi
-
 
   // Giải thích tại sao truyền vô component on vẫn thay đổi like
   // -> hàm Notify sẽ bị tạo mới mỗi lần với KQ return tĩnh khác nhau và được truyền qua props xuống con

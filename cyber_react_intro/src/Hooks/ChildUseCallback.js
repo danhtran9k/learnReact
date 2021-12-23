@@ -26,5 +26,6 @@ export default memo(ChildUseCallback);
 // Chú ý memo khác với useMemo
 // https://reactjs.org/docs/react-api.html#reactmemo
 // https://reactjs.org/docs/hooks-reference.html#usememo
+// https://reactjs.org/docs/hooks-faq.html#how-do-i-implement-shouldcomponentupdate
 
 // memo là HOC

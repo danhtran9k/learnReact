@@ -255,6 +255,14 @@ export default class NavbarRoot extends Component {
                 >
                   Demo useCallback
                 </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/demousememo"
+                >
+                  Demo useMemo
+                </NavLink>
                 {/* demo K3*/}
               </div>
             </li>
