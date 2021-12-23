@@ -24,7 +24,7 @@ import DemoHookUseCallback from './Hooks/DemoHookUseCallback';
 import DemoHookUseMemo from './Hooks/DemoHookUseMemo';
 import DemoUseRef from './Hooks/DemoUseRef';
 import DemoUseReducer from './Hooks/DemoUseReducer';
-import DemoUseContext from './Hooks/DemoUseContext';
+import DemoUseContextWrap from './Hooks/DemoUseContextWrap';
 /* 
 Header ở ngoài Switch nên render bình thường
 Chỉ cần dẫn link của nav giống ĐN trong Router
@@ -84,7 +84,7 @@ function App() {
         <Route exact path="/demousememo" component={DemoHookUseMemo} />
         <Route exact path="/demouseref" component={DemoUseRef} />
         <Route exact path="/demousereducer" component={DemoUseReducer} />
-        <Route exact path="/demousecontext" component={DemoUseContext} />
+        <Route exact path="/demousecontext" component={DemoUseContextWrap} />
 
         {/* demo */}
       </Switch>

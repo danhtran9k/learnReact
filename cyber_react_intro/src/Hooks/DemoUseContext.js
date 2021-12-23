@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UseContextDemo } from './Context/ContextProvider';
 
 let arrProduct = [
   { id: 1, name: 'Iphone', price: 1000 },
@@ -6,11 +7,26 @@ let arrProduct = [
   { id: 3, name: 'Huawei P20', price: 1200 },
 ];
 
-const addToCart = (itemClick) => {
-  console.log(itemClick);
-};
-
 export default function DemoUseContext() {
+  let store = useContext(UseContextDemo);
+  console.log('store:', store);
+
+  //   let { cartReducer } = useContext(UseContextDemo);
+  let [cart, dispatch] = store.cartReducer;
+
+  console.log('store.cartReducer:', store.cartReducer);
+  console.log('cart', cart);
+
+  const addToCart = (itemClick) => {
+    //   console.log(itemClick);
+    // copy lại action của reducer
+    const action = {
+      type: 'addToCart',
+      item: itemClick,
+    };
+    dispatch(action);
+  };
+
   return (
     <div>
       <div className="container">
@@ -54,7 +70,7 @@ export default function DemoUseContext() {
             </tr>
           </thead>
           <tbody>
-            {arrProduct.map((product, index) => {
+            {cart.map((product, index) => {
               return (
                 <tr key={index}>
                   <td>{product.id}</td>
