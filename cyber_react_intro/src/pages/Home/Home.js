@@ -80,6 +80,9 @@ export default class Home extends Component {
             <NavLink className="d-block" to="/demousereducer">
               Demo useReducer
             </NavLink>
+            <NavLink className="d-block" to="/demousecontext">
+              Demo useContext
+            </NavLink>
 
             {/* demo */}
           </div>

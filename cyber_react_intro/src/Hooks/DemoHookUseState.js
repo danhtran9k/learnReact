@@ -26,7 +26,7 @@ export default function DemoHookUseState() {
    */
   return (
     <div className="container m-5">
-      <div className="card text-left">
+      <div className="card text-left">
         <img
           style={{ height: 250, width: 250 }}
           className="card-img-top"
@@ -35,7 +35,7 @@ export default function DemoHookUseState() {
         />
         <div className="card-body">
           <h4 className="card-title">Picture</h4>
-          <p style={{ color: 'red' }}> {state.like} ♥</p>
+          <p style={{ color: 'red' }}> {state.like} ♥</p>
         </div>
       </div>
 
