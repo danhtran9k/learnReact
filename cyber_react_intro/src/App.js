@@ -23,6 +23,7 @@ import DemoHookUseEffect from './Hooks/DemoHookUseEffect';
 import DemoHookUseCallback from './Hooks/DemoHookUseCallback';
 import DemoHookUseMemo from './Hooks/DemoHookUseMemo';
 import DemoUseRef from './Hooks/DemoUseRef';
+import DemoUseReducer from './Hooks/DemoUseReducer';
 /* 
 Header ở ngoài Switch nên render bình thường
 Chỉ cần dẫn link của nav giống ĐN trong Router
@@ -69,15 +70,21 @@ function App() {
         <Route exact path="/demojss" component={DemoJSS} />
         <Route exact path="/demotheme" component={DemoTheme} />
         <Route exact path="/lifecyclemount" component={LifeCycleMount} />
-        <Route exact path="/lifecycledidupdate" component={LifeCycleDidUpdate} />
+        <Route
+          exact
+          path="/lifecycledidupdate"
+          component={LifeCycleDidUpdate}
+        />
         <Route exact path="/lifecyclereact" component={LifeCycleReact} />
+        {/* K3 - demo Hooks */}
         <Route exact path="/demousestate" component={DemoHookUseState} />
         <Route exact path="/demouseeffect" component={DemoHookUseEffect} />
         <Route exact path="/demousecallback" component={DemoHookUseCallback} />
         <Route exact path="/demousememo" component={DemoHookUseMemo} />
         <Route exact path="/demouseref" component={DemoUseRef} />
         
-        
+        <Route exact path="/demousereducer" component={DemoUseReducer} />
+
         {/* demo */}
       </Switch>
       <hr />

@@ -271,6 +271,14 @@ export default class NavbarRoot extends Component {
                 >
                   Demo useRef
                 </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/demousereducer"
+                >
+                  Demo useReducer
+                </NavLink>
                 {/* demo K3*/}
               </div>
             </li>
