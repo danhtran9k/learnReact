@@ -237,7 +237,7 @@ export default class NavbarRoot extends Component {
                   className="dropdown-item"
                   to="/demousestate"
                 >
-                  Demo Hook Use State
+                  Demo useState
                 </NavLink>
                 <NavLink
                   activeClassName="activeNavItem"
@@ -245,7 +245,15 @@ export default class NavbarRoot extends Component {
                   className="dropdown-item"
                   to="/demouseeffect"
                 >
-                  Demo Hook Use Effect
+                  Demo useEffect
+                </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/demousecallback"
+                >
+                  Demo useCallback
                 </NavLink>
                 {/* demo K3*/}
               </div>

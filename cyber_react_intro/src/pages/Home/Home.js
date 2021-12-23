@@ -68,6 +68,9 @@ export default class Home extends Component {
             <NavLink className="d-block" to="/demouseeffect">
               Demo Hook useEffect
             </NavLink>
+            <NavLink className="d-block" to="/demousecallback">
+              Demo Hook useCallback
+            </NavLink>
 
             {/* demo */}
           </div>
