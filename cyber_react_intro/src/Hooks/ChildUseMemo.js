@@ -4,6 +4,7 @@ function ChildUseMemo(props) {
   console.log('cart child-useMemo render');
   return (
     <div>
+      <h4>{props.title}</h4>
       <table className="table">
         <thead>
           <tr>
