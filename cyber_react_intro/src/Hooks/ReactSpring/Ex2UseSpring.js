@@ -19,26 +19,56 @@ export default function Ex2UseSpring() {
   // Cách định nghĩa trong có vẻ như obj nhưng thực chất là API
   // propsUseString nếu ko xài thì viết cách dưới, tránh ESLint warn
 
+  //Tăng font chữ tăng độ dài
+  let propAnimation = useSpring({
+    from: {
+      width: '0%',
+      height: '0%',
+      fontSize: '10px',
+    },
+    // https://react-spring.io/hooks/use-spring#async-chainsscripts
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator/next
+    // https://react-spring.io/common/props#cancel-prop
+    // https://react-spring.io/common/props#overview
+    // -> cancel trong react-spring
+    to: async (next, cancel) => {
+      await next({ width: '100%', height: '100%', fontSize: '50px' });
+      await next({ width: '50%', height: '50%', fontSize: '10px' });
+      await next({ width: '100%', height: '100%', fontSize: '50px' });
+    },
+    config: { duration: 1000 },
+    // duration ms cho mỗi await
+    // Nếu gặp return giữa chừng sẽ dừng lại
+  });
+
   return (
-    <animated.div
-      style={{
-        // color: color.interpolate((r, g, b) => {
-        //   return `rgb(${r},${g},${b})`;
-        // }),
-        // "interpolate" function is deprecated, replace with 'to'
-        color: color.to((r, g, b) => {
-          //  console.log('r:', r);
-          // r,g,b khi destruct ra thì là primitive thật sự
-          //  Nếu log sẽ thấy giá trị trả về liên tục
-          return `rgb(${r},${g},${b})`;
-        }),
-      }}
-    >
-      hello cybersoft
-    </animated.div>
+    <div>
+      <animated.div
+        style={{
+          // color: color.interpolate((r, g, b) => {
+          //   return `rgb(${r},${g},${b})`;
+          // }),
+          // "interpolate" function is deprecated, replace with 'to'
+          color: color.to((r, g, b) => {
+            //  console.log('r:', r);
+            // r,g,b khi destruct ra thì là primitive thật sự
+            //  Nếu log sẽ thấy giá trị trả về liên tục
+            return `rgb(${r},${g},${b})`;
+          }),
+        }}
+      >
+        hello cybersoft
+      </animated.div>
+      <animated.span style={propAnimation} className="bg-dark text-white">
+        <span>hello cyberlearn</span>
+        <p>Khóa học được thực hiện tại cyberlearn.vn</p>
+      </animated.span>
+    </div>
   );
 }
 
 /**
  * https://react-spring.io/basics#view-interpolation
+ * 
+ * useSpring và useSprings là 2 thư viện khác nhau
  */
