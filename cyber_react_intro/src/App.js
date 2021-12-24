@@ -27,6 +27,7 @@ import DemoUseReducer from './Hooks/DemoUseReducer';
 import DemoUseContextWrap from './Hooks/DemoUseContextWrap';
 import DemoUseSpring from './Hooks/ReactSpring/DemoUseSpring';
 import Ex2UseSpring from './Hooks/ReactSpring/Ex2UseSpring';
+import Ex3UseSpring from './Hooks/ReactSpring/Ex3UseSpring';
 /* 
 Header ở ngoài Switch nên render bình thường
 Chỉ cần dẫn link của nav giống ĐN trong Router
@@ -90,6 +91,7 @@ function App() {
         {/* K3 - Spring animation */}
         <Route exact path="/demousespring" component={DemoUseSpring} />
         <Route exact path="/ex2spring" component={Ex2UseSpring} />
+        <Route exact path="/ex3spring" component={Ex3UseSpring} />
 
         {/* demo */}
       </Switch>
