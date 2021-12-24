@@ -87,6 +87,9 @@ export default class Home extends Component {
             <NavLink className="d-block" to="/demousespring">
               Demo useSpring
             </NavLink>
+            <NavLink className="d-block" to="/ex2spring">
+              Ex2 spring - interpolate
+            </NavLink>
 
             {/* demo */}
           </div>

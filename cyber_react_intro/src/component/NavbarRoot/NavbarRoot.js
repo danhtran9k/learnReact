@@ -310,6 +310,14 @@ export default class NavbarRoot extends Component {
                 >
                   Demo useSpring
                 </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/ex2spring"
+                >
+                  Ex2 spring
+                </NavLink>
 
                 {/* demo K3*/}
               </div>
