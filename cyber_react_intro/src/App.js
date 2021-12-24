@@ -29,6 +29,7 @@ import DemoUseSpring from './Hooks/ReactSpring/DemoUseSpring';
 import Ex2UseSpring from './Hooks/ReactSpring/Ex2UseSpring';
 import Ex3UseSpring from './Hooks/ReactSpring/Ex3UseSpring';
 import Ex4UseTrail from './Hooks/ReactSpring/Ex4UseTrail';
+import Ex5UseTransition from './Hooks/ReactSpring/Ex5UseTransition';
 /* 
 Header ở ngoài Switch nên render bình thường
 Chỉ cần dẫn link của nav giống ĐN trong Router
@@ -94,6 +95,7 @@ function App() {
         <Route exact path="/ex2spring" component={Ex2UseSpring} />
         <Route exact path="/ex3springs" component={Ex3UseSpring} />
         <Route exact path="/ex4trail" component={Ex4UseTrail} />
+        <Route exact path="/ex5transition" component={Ex5UseTransition} />
 
         {/* demo */}
       </Switch>

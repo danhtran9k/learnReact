@@ -334,6 +334,14 @@ export default class NavbarRoot extends Component {
                 >
                   Ex4 useTrail
                 </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/ex5transition"
+                >
+                  Ex5 useTransition
+                </NavLink>
 
                 {/* demo K3*/}
               </div>
