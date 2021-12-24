@@ -90,8 +90,11 @@ export default class Home extends Component {
             <NavLink className="d-block" to="/ex2spring">
               Ex2 spring - interpolate
             </NavLink>
-            <NavLink className="d-block" to="/ex3spring">
+            <NavLink className="d-block" to="/ex3springs">
               Ex3 spring_S
+            </NavLink>
+            <NavLink className="d-block" to="/ex4trail">
+              Ex4 useTrail
             </NavLink>
 
             {/* demo */}
