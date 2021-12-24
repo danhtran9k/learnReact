@@ -69,6 +69,7 @@ export default function Ex2UseSpring() {
 
 /**
  * https://react-spring.io/basics#view-interpolation
+ * https://react-spring.io/common/interpolation
  * 
  * useSpring và useSprings là 2 thư viện khác nhau
  */
