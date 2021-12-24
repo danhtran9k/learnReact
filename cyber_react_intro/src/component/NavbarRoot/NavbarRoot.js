@@ -290,6 +290,30 @@ export default class NavbarRoot extends Component {
                 {/* demo K3*/}
               </div>
             </li>
+            <li className="nav-item dropup">
+              <button
+                type="button"
+                className="btn btn-secondary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                K3 Spring
+              </button>
+
+              <div className="dropdown-menu" aria-labelledby="dropdownId">
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/demousespring"
+                >
+                  Demo useSpring
+                </NavLink>
+
+                {/* demo K3*/}
+              </div>
+            </li>
             {/* demo*/}
           </ul>
         </div>

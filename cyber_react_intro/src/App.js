@@ -25,6 +25,7 @@ import DemoHookUseMemo from './Hooks/DemoHookUseMemo';
 import DemoUseRef from './Hooks/DemoUseRef';
 import DemoUseReducer from './Hooks/DemoUseReducer';
 import DemoUseContextWrap from './Hooks/DemoUseContextWrap';
+import DemoUseSpring from './Hooks/ReactSpring/DemoUseSpring';
 /* 
 Header ở ngoài Switch nên render bình thường
 Chỉ cần dẫn link của nav giống ĐN trong Router
@@ -85,6 +86,8 @@ function App() {
         <Route exact path="/demouseref" component={DemoUseRef} />
         <Route exact path="/demousereducer" component={DemoUseReducer} />
         <Route exact path="/demousecontext" component={DemoUseContextWrap} />
+        {/* K3 - Spring animation */}
+        <Route exact path="/demousespring" component={DemoUseSpring} />
 
         {/* demo */}
       </Switch>

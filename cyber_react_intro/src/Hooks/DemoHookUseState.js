@@ -6,15 +6,19 @@ export default function DemoHookUseState() {
   //(1)this.state = {like:0}
   //(2) this.setState(newState);
   //tuple
+  // Phải dùng seEffect hoặc log giá trị ở lần render sau
+  // https://stackoverflow.com/questions/56247433/how-to-use-setstate-callback-on-react-hooks
+  console.log('log state.like after render:', state.like)
 
   const handleLike = () => {
+
     //Lấy like tăng lên 1 và setState
     setState({
         like: state.like + 1,
     });
     // Ko log sau khi setState ở trên được như trong rcc
     // Nếu log ở phía dưới thì bị trễ 1 nhịp vì async
-    console.log('state.like:', state.like)
+    console.log('log state.like after set:', state.like)
   };
 
   /**

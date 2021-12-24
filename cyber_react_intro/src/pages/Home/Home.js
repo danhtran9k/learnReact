@@ -83,6 +83,10 @@ export default class Home extends Component {
             <NavLink className="d-block" to="/demousecontext">
               Demo useContext
             </NavLink>
+            <h5>Khóa 3 - Spring animation</h5>
+            <NavLink className="d-block" to="/demousespring">
+              Demo useSpring
+            </NavLink>
 
             {/* demo */}
           </div>
