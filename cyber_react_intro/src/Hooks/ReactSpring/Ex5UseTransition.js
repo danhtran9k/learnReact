@@ -109,7 +109,7 @@ function Mount() {
     config: config.molasses,
     onRest: () => set(!show),
   });
-  console.log('Toggle re-render');
+  // console.log('Toggle re-render');
 
   return transitions(
     (styles, item) => item && <animated.span style={styles}>✌️</animated.span>

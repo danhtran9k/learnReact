@@ -342,6 +342,14 @@ export default class NavbarRoot extends Component {
                 >
                   Ex5 useTransition
                 </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/ex6usechain"
+                >
+                  Ex6 useChain
+                </NavLink>
 
                 {/* demo K3*/}
               </div>

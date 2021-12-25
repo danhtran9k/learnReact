@@ -99,6 +99,9 @@ export default class Home extends Component {
             <NavLink className="d-block" to="/ex5transition">
               Ex5 useTransition
             </NavLink>
+            <NavLink className="d-block" to="/ex6usechain">
+              Ex6 useChain
+            </NavLink>
 
             {/* demo */}
           </div>
