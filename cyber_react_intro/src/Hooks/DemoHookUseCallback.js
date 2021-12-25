@@ -16,16 +16,21 @@ export default function DemoHookUseCallback() {
   const renderNotify = () => {
     return `Bạn đã thả ${like} ♥ !`;
   };
-  
+
   let callBackRenderNotify = useCallback(renderNotify, [sub]); // eslint-disable-line
   let callBackRenderNotifyNoRender = useCallback(renderNotify, []); // eslint-disable-line
   //   Viết như trên sẽ ko bao giờ update
-  
+
   //   Tuy nhiên hàm render do chứa ${like} nhưng useCallback lại ko dùng
   // -> ESLint sẽ Warning
 
   /**
    * Chú ý
+   * https://stackoverflow.com/questions/54963248/whats-the-difference-between-usecallback-and-usememo-in-practice/54963730
+        * useMemo is to memoize a calculation result between a function's calls and between renders
+      useCallback is to memoize a callback itself (referential equality) between renders
+      useRef is to keep data between renders (updating does not fire re-rendering)
+      useState is to keep data between renders (updating will fire re-rendering)
    * https://reactjs.org/docs/hooks-reference.html#usecallback
    * https://stackoverflow.com/questions/55840294/how-to-fix-missing-dependency-warning-when-using-useeffect-react-hook
    * useCallback(fn, deps) is equivalent to useMemo(() => fn, deps).
@@ -40,7 +45,7 @@ export default function DemoHookUseCallback() {
   //   -> hàm noti được tạo mới (tất cả nói chung -> chỉ có primitive thì memo mới nhận biết là ko đổi) và đưa vô props
   // -> memo thấy hàm mới (vùng nhớ tham chiếu mới) nên sẽ render lại - xảy ra khi ko phải biến đó thay đổi
 
-  // Giải thích tại sao truyền vô component on vẫn thay đổi like
+  // Giải thích tại sao truyền vô component con vẫn thay đổi like
   // -> hàm Notify sẽ bị tạo mới mỗi lần với KQ return tĩnh khác nhau và được truyền qua props xuống con
 
   // Vấn đề truyền ở đây thì ${like} đang tương tự gán với this.like ở class cha,
