@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 
 function ChildUseMemo(props) {
-  console.log('cart child-useMemo render');
+  console.log('cart child-useMemo render:' , props.title);
   return (
     <div>
       <h4>{props.title}</h4>
