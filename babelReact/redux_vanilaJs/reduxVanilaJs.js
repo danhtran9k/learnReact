@@ -8,17 +8,19 @@ console.log(window.Redux);
 // store
 
 // Ở đây State init ta dùng thẳng 1 array ko xài obj vì bài toàn đơn giản
-const reduxVanilaJsState = ['initial state'];
+const reduxVanilaJsState = JSON.parse(localStorage.getItem('hobby_list')) || [];
 
 const reduxVanilaJsReducer = (stateInit = reduxVanilaJsState, action) => {
-  const state = { ...stateInit };
+  const state = [...stateInit];
 
   switch (action.type) {
     case 'ADD_HOBBY':
-      console.log('case ADD_HOBBY state:', state)
-      return state;
+      console.log('case ADD_HOBBY state:', state);
+      return [...state, action.payload];
+    //   return stateInit;
+
     default:
-      console.log('default')
+      console.log('default');
       return stateInit;
   }
 };
@@ -30,9 +32,11 @@ const { createStore } = window.Redux;
 const store = createStore(reduxVanilaJsReducer);
 console.log('store:', store);
 
+// ============================================================
 // RENDER REDUX HOBBY LIST
 
 const renderHobbyList = (hobbyList) => {
+  console.log('renderHobbyList')
   // Check input para ko phải array / rỗng -> ko render
   if (!Array.isArray(hobbyList) || hobbyList.length === 0) return;
 
@@ -49,6 +53,7 @@ const renderHobbyList = (hobbyList) => {
   }
 };
 
+// ============================================================
 // RENDER INITIAL HOBBY LIST
 const initialHobbyList = store.getState();
 // Do store chỉ có dúng 1 array là state cần dùng nên ko . thêm reducer con phía sau
@@ -56,6 +61,7 @@ const initialHobbyList = store.getState();
 console.log('initialHobbyList:', initialHobbyList);
 renderHobbyList(initialHobbyList);
 
+// ============================================================
 // HANDLE FORM SUBMIT
 
 const hobbyFormElement = document.querySelector('#hobbyFormId');
@@ -88,7 +94,13 @@ if (hobbyFormElement) {
   hobbyFormElement.addEventListener('submit', handleFormSubmit);
 }
 
+// ============================================================
 // Khi state thay đổi -> re-render lại giao diện
+// state kiểu này sẽ luôn bị re-render mỗi khi dispatch
 store.subscribe(() => {
   console.log('STATE UPDATE: ', store.getState());
+  const newHobbyList = store.getState();
+  renderHobbyList(newHobbyList);
+
+  localStorage.setItem('hobby_list', JSON.stringify(newHobbyList));
 });
