@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>f8_preview</title>
+
+    <!-- <link rel="stylesheet" href="./css/BarbellTask.css" /> -->
+    <style></style>
+    
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- ============================================================ -->
+    <script type="text/babel">
+      // ==========================================================
+
+      function Content() {
+        const [imgUpload, setImgUpload] = React.useState();
+
+        React.useEffect(() => {
+          return () => {
+            imgUpload && URL.revokeObjectURL(imgUpload.preview);
+            // Vẫn log ra được urlImg cũ nhưng truy cập vào thì ko còn
+            // revoke nhưng attribute của obj cũ vẫn đang lưu 
+            console.log('imgUpload:', imgUpload);
+          };
+        }, [imgUpload]);
+
+        const handleImgUpload = (e) => {
+          const file = e.target.files[0];
+          file.preview = URL.createObjectURL(file);
+
+          // Nếu chỉ lưu trực tiếp Url thì obj file sẽ mất đi do obj local
+          // Bắt buộc phải đưa cả obj vào state kèm với Url mới
+          // BUG -> up cúng 1 file 2 lần thì sẽ ko có sự thay đổi, ko log ra 6:00
+          setImgUpload(file);
+        };
+
+        return (
+          <div>
+            <input type="file" onChange={handleImgUpload} />
+            {imgUpload && (
+              <img
+                src={imgUpload.preview}
+                alt="img Upload"
+                style={{ width: '20%', display: 'block' }}
+              />
+            )}
+          </div>
+        );
+      }
+
+      // ==========================================================
+      ReactDOM.render(<Content />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
