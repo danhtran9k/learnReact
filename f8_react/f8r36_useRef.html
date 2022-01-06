@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>f8_36_useRef</title>
+
+    <!-- <link rel="stylesheet" href="./css/BarbellTask.css" /> -->
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- ============================================================ -->
+    <script type="text/babel">
+      // ==========================================================
+
+      // thay vì ĐN timerId ở bên ngoài ta có thề dùng useRef
+      // Nếu chi dùng let, const var tạo timerId bình thường bên trong rfc
+      // Khi render lại sẽ bị reset
+      /**
+       * useRef luôn return về 1 obj dù giá trị đầu là primitive
+       *
+       */
+
+      function App() {
+        const [count, setCount] = React.useState(60);
+
+        // Vì ta chỉ truy xuất vào thuộc tính current nên dùng const luôn
+        // useRef chỉ được khởi tạo 1 lần đầu tiên nhưng thuộc tính vẫn có thể bị modified khi có event hoặc qua useEffect
+        const timerId = React.useRef();
+
+        // ==================================================
+        // 1 ứng dụng khác là lấy giá trị state trước đó
+        const prevCount = React.useRef();
+        React.useEffect(() => {
+          prevCount.current = count;
+        }, [count]);
+        // ==================================================
+        // 1 cách khác là tham chiếu tới DOM, lấy input, lấy tọa độ ...
+        const h1Ref = React.useRef();
+        React.useEffect(() => {
+          const rect = h1Ref.current.getBoundingClientRect();
+          console.log('h1Ref:', h1Ref)
+          console.log('h1Ref.current:', [h1Ref.current])
+          console.log('h1Ref.current.getBoundingClientRect():', h1Ref.current.getBoundingClientRect())
+        });
+        // ==================================================
+
+        const handleStart = () => {
+          // Tuy nhiên muốn sử dụng phải dùng .current
+          timerId.current = setInterval(() => {
+            setCount((prev) => prev - 1);
+          }, 1000);
+          console.log('Start timerId:', timerId);
+        };
+
+        const handleStop = () => {
+          clearInterval(timerId.current);
+          console.log('Stop timerId:', timerId);
+        };
+
+        console.log(`count ${count} - prevCount.current ${prevCount.current} `);
+        return (
+          <div style={{ padding: 20 }}>
+            <h1 ref={h1Ref}>{count}</h1>
+            <button onClick={handleStart}> Start </button>
+            <button onClick={handleStop}> Stop </button>
+          </div>
+        );
+      }
+
+      // ==========================================================
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
