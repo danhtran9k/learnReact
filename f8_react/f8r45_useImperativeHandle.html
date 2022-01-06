@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>f8_45_useImperativeHandle</title>
+
+    <!-- <link rel="stylesheet" href="./css/BarbellTask.css" /> -->
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- ============================================================ -->
+    <script type="text/babel">
+      // ==========================================================
+
+      function App() {
+        const videoRef = React.useRef();
+
+        const handlePlay = () => {
+          videoRef.current.play();
+        };
+
+        const handlePause = () => {
+          videoRef.current.pause();
+        };
+
+        React.useEffect(() => {
+          console.log('videoRef:', videoRef);
+        }, []);
+
+        return (
+          <div className="App" style={{ padding: 20 }}>
+            <Video ref={videoRef} />
+            <button onClick={handlePlay}>Play</button>
+            <button onClick={handlePause}>Pause</button>
+          </div>
+        );
+      }
+
+      // import videoUrl from "./assets/video-1.mp4";
+      const videoUrl = './assets/video-1.mp4';
+
+      // const Video = React.forwardRef((props, ref) => {
+      function Video(props, ref) {
+        console.log('props:', [props]);
+        // console.log('props.ref:', props.ref);
+        // log ra sẽ thấy ref ko truyền trực tiếp xuống được
+
+        const videoRef = React.useRef();
+
+        // React.useImperativeHandle(ref, () => ({
+        //   play() {
+        //     videoRef.current.play();
+        //   },
+        //   pause() {
+        //     videoRef.current.pause();
+        //   },
+        // }));
+
+        return (
+          <video
+            ref={ref}
+            // ref={props.ref}
+            // ko thể truyển trực tiếp ref từ cha xuống con trong rfc được
+            // Mặc định rfc ko có ref !!
+            src={videoUrl}
+            width={250}
+            // controls
+            // bản thân vidoe có cung cấp sẵn 1 dạng control mặc định
+            // Tuy nhiên có thể tự code lại control mặc định
+          />
+        );
+      }
+      // );
+
+      Video = React.forwardRef(Video);
+      // export default forwardRef(Video);
+      
+      // nếu tạch riêng file thì phải dùng HOC
+      // https://reactjs.org/docs/react-api.html#reactforwardref
+
+      // ==========================================================
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
