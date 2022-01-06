@@ -25,6 +25,11 @@
         const videoRef = React.useRef();
 
         const handlePlay = () => {
+          console.log('videoRef.current:', videoRef.current);
+          // Nếu ko dùng useImperative Ref sẽ log ra được cả obj bên trong
+          // ko bao đóng -> nguy hiểm, truyền ref trỏ thẳng vào obj
+          // Có thể bị tương tác modified -> docs
+          // videoRef.current.remove()
           videoRef.current.play();
         };
 
@@ -55,22 +60,26 @@
         // log ra sẽ thấy ref ko truyền trực tiếp xuống được
 
         const videoRef = React.useRef();
-
-        // React.useImperativeHandle(ref, () => ({
-        //   play() {
-        //     videoRef.current.play();
-        //   },
-        //   pause() {
-        //     videoRef.current.pause();
-        //   },
-        // }));
+        
+        // https://reactjs.org/docs/hooks-reference.html#useimperativehandle
+        React.useImperativeHandle(ref, () => ({
+          play() {
+            videoRef.current.play();
+          },
+          pause() {
+            videoRef.current.pause();
+          },
+        }));
 
         return (
           <video
-            ref={ref}
+            // ref={ref}
+            // Nếu xài useImperativeRef thì trong video ko gắn ref nữa
+            ref={videoRef}
             // ref={props.ref}
             // ko thể truyển trực tiếp ref từ cha xuống con trong rfc được
             // Mặc định rfc ko có ref !!
+
             src={videoUrl}
             width={250}
             // controls
@@ -83,7 +92,7 @@
 
       Video = React.forwardRef(Video);
       // export default forwardRef(Video);
-      
+
       // nếu tạch riêng file thì phải dùng HOC
       // https://reactjs.org/docs/react-api.html#reactforwardref
 
