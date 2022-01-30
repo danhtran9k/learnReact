@@ -17,6 +17,12 @@
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
 
+    <!-- <script src="./assets/names.json" type="text/javascript"></script>
+    <script type="module">
+      import data from './assets/names.json';
+    </script> -->
+    <!-- https://stackoverflow.com/questions/19706046/how-to-read-an-external-local-json-file-in-javascript -->
+    <!-- Xài live Server là ok hết ko cần workaround -->
     <!-- ============================================================ -->
     <script type="text/babel">
       // ==========================================================
@@ -47,9 +53,12 @@
         const h1Ref = React.useRef();
         React.useEffect(() => {
           const rect = h1Ref.current.getBoundingClientRect();
-          console.log('h1Ref:', h1Ref)
-          console.log('h1Ref.current:', [h1Ref.current])
-          console.log('h1Ref.current.getBoundingClientRect():', h1Ref.current.getBoundingClientRect())
+          console.log('h1Ref:', h1Ref);
+          console.log('h1Ref.current:', [h1Ref.current]);
+          console.log(
+            'h1Ref.current.getBoundingClientRect():',
+            h1Ref.current.getBoundingClientRect()
+          );
         });
         // ==================================================
 
@@ -69,9 +78,71 @@
         console.log(`count ${count} - prevCount.current ${prevCount.current} `);
         return (
           <div style={{ padding: 20 }}>
+            <h1>F8 timer</h1>
             <h1 ref={h1Ref}>{count}</h1>
             <button onClick={handleStart}> Start </button>
             <button onClick={handleStop}> Stop </button>
+            <hr />
+            <TimerRef />
+          </div>
+        );
+      }
+
+      // ==================================================
+
+      function TimerRef() {
+        const [seconds, setSeconds] = React.useState(0);
+        const [running, setRunning] = React.useState(false);
+        const [data, setData] = React.useState('');
+
+        // Thay vì dùng useRef để cố định const timerId thì ta dùng 1 biến state để control timer on / off
+
+        React.useEffect(() => {
+          if (running) {
+            const timer = setInterval(() => {
+              setSeconds((seconds) => seconds + 0.1);
+            }, 100);
+            return () => clearInterval(timer);
+          }
+        }, [running]);
+
+        React.useEffect(() => {
+          if (seconds > 2) {
+            fetch('./assets/names.json')
+              // fetch('/assets/names.json')
+              .then((res) => res.json())
+              .then((data) => setData(data))
+              .catch((err) => {
+                console.log('err: ', [err]);
+                console.log('temp fix for offline');
+                // const dataOffline = JSON.parse(names);
+                // console.log('dataOffline:', dataOffline);
+                // -> failed without live server
+                const hackFixData = setData(['Jack', 'Jill', 'John', 'Joe']);
+              });
+          }
+        }, [seconds > 2]);
+
+        const onToggle = () => setRunning((running) => !running);
+
+        return (
+          <div>
+            <h1>Hooks - Prop Drilling</h1>
+            <p>
+              https://github.com/jherr/which-react-state-manager/tree/main/examples/hooks-prop-drilling
+            </p>
+            <p>
+              https://www.youtube.com/watch?v=P95DuIBwnqw&a%20%20b_channel=JackHerrington
+            </p>
+            <span>Stopwatch:</span>
+            <span>{seconds.toFixed(1)}</span>
+            <button onClick={onToggle}>{running ? 'Stop' : 'Start'}</button>
+            {data ? (
+              <>
+                <div> Data</div>
+                <div>{JSON.stringify(data)}</div>
+              </>
+            ) : null}
           </div>
         );
       }
