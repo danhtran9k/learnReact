@@ -6,8 +6,11 @@ export default class Home extends Component {
     return (
       <div className="bg-light container-fluid">
         <div className="row">
-          <div className="col-6">
-            <h5>Khóa 1 - React cơ bản</h5>
+          <div className="col-3">
+            <h3>Khóa 1 - React cơ bản</h3>
+
+            <br></br>
+
             <NavLink className="d-block" to="/demolayout">
               BaiTapChiaLayout
             </NavLink>
@@ -32,8 +35,13 @@ export default class Home extends Component {
             <NavLink className="d-block" to="/renderloopdemo">
               Render loop demo
             </NavLink>
+
             <br></br>
-            <h5>Khóa 2 - Truyền Data giữa các component</h5>
+
+            <h3>Khóa 2 - Truyền Data giữa các component</h3>
+
+            <br></br>
+
             <NavLink className="d-block" to="/demoprop">
               Demo prop
             </NavLink>
@@ -44,8 +52,11 @@ export default class Home extends Component {
               Demo Context
             </NavLink>
           </div>
-          <div className="col-6">
-            <h5>Khóa 3</h5>
+          <div className="col-3">
+            <h3>Khóa 3</h3>
+
+            <br></br>
+
             <NavLink className="d-block" to="/demojss">
               Demo JSS
             </NavLink>
@@ -61,7 +72,13 @@ export default class Home extends Component {
             <NavLink className="d-block" to="/lifecyclereact">
               Life Cycle React
             </NavLink>
-            <h5>Khóa 3 - Hooks</h5>
+
+            <br></br>
+
+            <h3>Khóa 3 - Hooks</h3>
+
+            <br></br>
+
             <NavLink className="d-block" to="/demousestate">
               Demo Hook useState
             </NavLink>
@@ -83,7 +100,13 @@ export default class Home extends Component {
             <NavLink className="d-block" to="/demousecontext">
               Demo useContext
             </NavLink>
-            <h5>Khóa 3 - Spring animation</h5>
+
+            <br></br>
+
+            <h3>Khóa 3 - Spring animation</h3>
+
+            <br></br>
+
             <NavLink className="d-block" to="/demousespring">
               Demo useSpring
             </NavLink>
@@ -104,6 +127,36 @@ export default class Home extends Component {
             </NavLink>
 
             {/* demo */}
+          </div>
+          <div className="col-3">
+            <h3>Khóa 5.1 Demo TailwindCss</h3>
+
+            <br></br>
+
+            <NavLink className="d-block" to="/twDemoGrid">
+              DemoGrid
+            </NavLink>
+            <NavLink className="d-block" to="/twPaddingMarginDemo">
+              PaddingMarginDemo
+            </NavLink>
+            <NavLink className="d-block" to="/twWidthHeightDemo">
+              WidthHeightDemo
+            </NavLink>
+            <NavLink className="d-block" to="/twFlexDemo">
+              FlexDemo
+            </NavLink>
+            <NavLink className="d-block" to="/twTextBackGroundDemo">
+              TextBackGroundDemo
+            </NavLink>
+            <NavLink className="d-block" to="/twBorderRadiusDemo">
+              BorderRadiusDemo
+            </NavLink>
+            <NavLink className="d-block" to="/twResponsiveDemo">
+              ResponsiveDemo
+            </NavLink>
+            <NavLink className="d-block" to="/twCustomCss">
+              CustomCss
+            </NavLink>
           </div>
         </div>
       </div>

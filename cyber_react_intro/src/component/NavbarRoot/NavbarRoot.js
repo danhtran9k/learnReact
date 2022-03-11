@@ -354,6 +354,85 @@ export default class NavbarRoot extends Component {
                 {/* demo K3*/}
               </div>
             </li>
+            <li className="nav-item dropup">
+              <button
+                type="button"
+                className="btn btn-secondary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Tailwind
+              </button>
+
+              <div className="dropdown-menu" aria-labelledby="dropdownId">
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/twDemoGrid"
+                >
+                  DemoGrid
+                </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/twPaddingMarginDemo"
+                >
+                  PaddingMarginDemo
+                </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/twWidthHeightDemo"
+                >
+                  WidthHeightDemo
+                </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/twFlexDemo"
+                >
+                  FlexDemo
+                </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/twTextBackGroundDemo"
+                >
+                  TextBackGroundDemo
+                </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/twBorderRadiusDemo"
+                >
+                  BorderRadiusDemo
+                </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/twResponsiveDemo"
+                >
+                  ResponsiveDemo
+                </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/twCustomCss"
+                >
+                  CustomCss
+                </NavLink>
+                {/* demo Tailwind*/}
+              </div>
+            </li>
             {/* demo*/}
           </ul>
         </div>

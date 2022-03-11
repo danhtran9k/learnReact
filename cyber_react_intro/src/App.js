@@ -31,6 +31,16 @@ import Ex3UseSpring from './Hooks/ReactSpring/Ex3UseSpring';
 import Ex4UseTrail from './Hooks/ReactSpring/Ex4UseTrail';
 import Ex5UseTransition from './Hooks/ReactSpring/Ex5UseTransition';
 import Ex6UseChain from './Hooks/ReactSpring/Ex6UseChain';
+// Demo Tailwind-css
+import DemoGrid from './TailWindComponent/DemoGrid';
+import PaddingMarginDemo from './TailWindComponent/PaddingMarginDemo';
+import WidthHeightDemo from './TailWindComponent/WidthHeightDemo';
+import FlexDemo from './TailWindComponent/FlexDemo';
+import TextBackGroundDemo from './TailWindComponent/TextBackGroundDemo';
+import BorderRadiusDemo from './TailWindComponent/BorderRadiusDemo';
+import ResponsiveDemo from './TailWindComponent/ResponsiveDemo';
+import CustomCss from './TailWindComponent/CustomCss';
+
 /* 
 Header ở ngoài Switch nên render bình thường
 Chỉ cần dẫn link của nav giống ĐN trong Router
@@ -98,6 +108,24 @@ function App() {
         <Route exact path="/ex4trail" component={Ex4UseTrail} />
         <Route exact path="/ex5transition" component={Ex5UseTransition} />
         <Route exact path="/ex6usechain" component={Ex6UseChain} />
+
+        {/* Demo Tailwind_CSS */}
+        <Route exact path="/twDemoGrid" component={DemoGrid} />
+        <Route
+          exact
+          path="/twPaddingMarginDemo"
+          component={PaddingMarginDemo}
+        />
+        <Route exact path="/twWidthHeightDemo" component={WidthHeightDemo} />
+        <Route exact path="/twFlexDemo" component={FlexDemo} />
+        <Route
+          exact
+          path="/twTextBackGroundDemo"
+          component={TextBackGroundDemo}
+        />
+        <Route exact path="/twBorderRadiusDemo" component={BorderRadiusDemo} />
+        <Route exact path="/twResponsiveDemo" component={ResponsiveDemo} />
+        <Route exact path="/twCustomCss" component={CustomCss} />
 
         {/* demo */}
       </Switch>
