@@ -160,6 +160,9 @@ export default class Home extends Component {
             <NavLink className="d-block" to="/twBtCard">
               BT Card Tailwind
             </NavLink>
+            <NavLink className="d-block" to="/twBtSidebar">
+              BT Sidebar Tailwind
+            </NavLink>
           </div>
         </div>
       </div>

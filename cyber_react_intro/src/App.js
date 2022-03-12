@@ -41,6 +41,7 @@ import BorderRadiusDemo from './TailWindComponent/BorderRadiusDemo';
 import ResponsiveDemo from './TailWindComponent/ResponsiveDemo';
 import CustomCss from './TailWindComponent/CustomCss';
 import BaiTapCardTailwindcss from './TailWindComponent/BaiTapCardTailwindcss';
+import BtTwSidebar from './BtTwSidebar/BtTwSidebar';
 
 /* 
 Header ở ngoài Switch nên render bình thường
@@ -128,6 +129,7 @@ function App() {
         <Route exact path="/twResponsiveDemo" component={ResponsiveDemo} />
         <Route exact path="/twCustomCss" component={CustomCss} />
         <Route exact path="/twBtCard" component={BaiTapCardTailwindcss} />
+        <Route exact path="/twBtSidebar" component={BtTwSidebar} />
 
         {/* demo */}
       </Switch>

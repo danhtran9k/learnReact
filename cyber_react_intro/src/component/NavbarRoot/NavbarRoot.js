@@ -438,6 +438,15 @@ export default class NavbarRoot extends Component {
                 >
                   BT Card tw
                 </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/twBtSidebar"
+                >
+                  BT Sidebar tw
+                </NavLink>
+
                 {/* demo Tailwind*/}
               </div>
             </li>
