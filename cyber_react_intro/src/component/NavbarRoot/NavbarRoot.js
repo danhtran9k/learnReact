@@ -430,6 +430,14 @@ export default class NavbarRoot extends Component {
                 >
                   CustomCss
                 </NavLink>
+                <NavLink
+                  activeClassName="activeNavItem"
+                  activeStyle={activeLinkStyle}
+                  className="dropdown-item"
+                  to="/twBtCard"
+                >
+                  BT Card tw
+                </NavLink>
                 {/* demo Tailwind*/}
               </div>
             </li>

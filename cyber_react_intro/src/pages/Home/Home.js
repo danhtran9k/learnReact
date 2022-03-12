@@ -157,6 +157,9 @@ export default class Home extends Component {
             <NavLink className="d-block" to="/twCustomCss">
               CustomCss
             </NavLink>
+            <NavLink className="d-block" to="/twBtCard">
+              BT Card Tailwind
+            </NavLink>
           </div>
         </div>
       </div>
