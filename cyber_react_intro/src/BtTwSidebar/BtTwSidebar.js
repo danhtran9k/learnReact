@@ -90,7 +90,7 @@ export default function BtTwSidebar() {
               <span className="flex items-center space-x-1">
                 <a
                   rel="noopener noreferrer"
-                  href="#"
+                  href="http://www.w3.org"
                   className="text-xs hover:underline dark:text-coolGray-400"
                 >
                   View profile
@@ -118,7 +118,10 @@ export default function BtTwSidebar() {
                       setMaDanhMuc(danhMuc.maDanhMuc);
                     }}
                   >
-                    <a href="#" className={classNameActive.join(' ')}>
+                    <a
+                      href="http://www.w3.org"
+                      className={classNameActive.join(' ')}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"
@@ -136,7 +139,7 @@ export default function BtTwSidebar() {
               <li>
                 <a
                   rel="noopener noreferrer"
-                  href="#"
+                  href="http://www.w3.org"
                   className="flex items-center p-2 space-x-3 rounded-md"
                 >
                   <svg
@@ -153,7 +156,7 @@ export default function BtTwSidebar() {
               <li>
                 <a
                   rel="noopener noreferrer"
-                  href="#"
+                  href="http://www.w3.org"
                   className="flex items-center p-2 space-x-3 rounded-md"
                 >
                   <svg

@@ -21,6 +21,7 @@ export default function SidebarCard(props) {
                   </div>
                   <a
                     className="text-blue-500 inline-flex items-center cursor-pointer"
+                    href="http://www.w3.org"
                     onClick={() => {
                       setOpenModal(true);
                       setItem(item);
